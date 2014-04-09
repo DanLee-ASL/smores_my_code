@@ -1,0 +1,8 @@
+# Hashes of file build rules.
+913b62cf7519c4dcfcd20d6b25ba1640 msgs/collision_message_plus.pb.cc
+cde99f94745c833b4b8f9499a927b3a2 msgs/command_message.pb.cc
+ff731766bb21ce858bb3ae7d7d1e56dd msgs/header.pb.cc
+ef821c75459fe078db70b6d92bad80ea msgs/pose.pb.cc
+b3a4968e0dcf57b760f8753cda85787f msgs/quaternion.pb.cc
+47315c8b72c602e2ef61cb843b55d1c3 msgs/time.pb.cc
+e791e855845544a7b9f93f334c681567 msgs/vector3d.pb.cc

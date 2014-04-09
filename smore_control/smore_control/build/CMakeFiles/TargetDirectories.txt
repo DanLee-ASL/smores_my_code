@@ -1,0 +1,3 @@
+/home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs/CMakeFiles/collision_message_plus.dir
+/home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs/CMakeFiles/command_message.dir
+/home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/CMakeFiles/smore_control.dir
