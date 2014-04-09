@@ -31,3 +31,6 @@ Project Target=smore_control,smore_control
 Use External Terminal=false
 Working Directory=
 isExecutable=false
+
+[Project]
+VersionControlSupport=kdevgit

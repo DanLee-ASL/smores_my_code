@@ -15,6 +15,10 @@ gazebo/gazebo.hh
 -
 math/gzmath.hh
 -
+unistd.h
+-
+termios.h
+-
 command_message.pb.h
 /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/command_message.pb.h
 iostream
