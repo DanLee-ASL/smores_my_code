@@ -60,7 +60,7 @@ int main(int argc, char **argv) {
     msg.add_jointgaittable(0);
     
     char key_pressed;
-    double leftWheel = 0, rightWheel = 0;
+    double leftWheel = 0, rightWheel = 0, joint1 = 0, joint2 = 0;
     while(true)
     {
 //       std::cin >> key_pressed;
@@ -91,13 +91,28 @@ int main(int argc, char **argv) {
 	  leftWheel = 0.0;
 	  rightWheel = 0.0;
 	  break;
+	  
+	case 'r':
+	  joint1 += 0.1;
+	  break;
+	  
+	case 't':
+	  joint1 -= 0.1;
+	  break;
+	  
+	case 'y':
+	  joint2 += 0.1;
+	  break;
+	case 'u':
+	  joint2 -= 0.1;
+	  break;
       }
       msg.set_messagetype(4);
       
-      msg.set_jointgaittable(0, 0); 
+      msg.set_jointgaittable(0, joint1); 
       msg.set_jointgaittable(1, leftWheel);
       msg.set_jointgaittable(2, rightWheel);
-      msg.set_jointgaittable(3, 0);
+      msg.set_jointgaittable(3, joint2);
 
       
       pub->Publish(msg);
