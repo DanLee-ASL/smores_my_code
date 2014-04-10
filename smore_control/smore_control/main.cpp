@@ -116,7 +116,7 @@ int main(int argc, char **argv) {
 
       
       pub->Publish(msg);
-      std::printf("LW: %f\tRW:%f\n", leftWheel, rightWheel);
+      std::printf("J1: %f\tJ2: %f\tLW: %f\tRW:%f\n", joint1, joint2, leftWheel, rightWheel);
       gazebo::common::Time::MSleep(100);
     }
     
