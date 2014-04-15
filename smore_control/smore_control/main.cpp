@@ -9,7 +9,10 @@
 
 #include <iostream>
 
+boost::shared_ptr<google::protobuf::Message> g_echoMsg;
+
 char getch() {
+  
         char buf = 0;
         struct termios old = {0};
         if (tcgetattr(0, &old) < 0)
@@ -29,6 +32,16 @@ char getch() {
         return (buf);
 }
 
+void poseCallback(ConstPosesStampedPtr &_msg)
+{
+    std::cout << _msg->time().DebugString() << std::endl;
+    for(int i = 0; i < _msg->pose_size(); i++)
+    {
+      std::cout << _msg->pose(i).DebugString() << std::endl;
+    }
+}
+
+
 int main(int argc, char **argv) {
     
     // load Gazebo
@@ -45,7 +58,15 @@ int main(int argc, char **argv) {
     std::string robotName = "SMORES6Uriah";
     std::string pubName = "~/" + robotName + "_world";
     gazebo::transport::PublisherPtr pub = node->Advertise<command_message::msgs::CommandMessage>(pubName);
-    pub->WaitForConnection();
+//     pub->WaitForConnection();
+    
+    // subscribe to Pose topic
+     std::string poseName = "/gazebo/default/pose/info";
+     gazebo::transport::SubscriberPtr poseSub = node->Subscribe<gazebo::msgs::PosesStamped>(poseName, poseCallback);
+//      std::string msgTypeName = gazebo::transport::getTopicMsgType(node->DecodeTopicName(poseName));
+//      g_echoMsg = gazebo::msgs::MsgFactory::NewMsg(msgTypeName);
+//      gazebo::transport::SubscriberPtr poseSub = node->Subscribe(poseName, echoCB);
+    
         
     std::cout << "getting in to the loop..." << std::endl;
     command_message::msgs::CommandMessage msg;
@@ -64,7 +85,7 @@ int main(int argc, char **argv) {
     while(true)
     {
 //       std::cin >> key_pressed;
-      key_pressed = getch();
+//       key_pressed = getch();
       switch(key_pressed)
       {
 	case 'i':
