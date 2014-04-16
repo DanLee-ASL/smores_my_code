@@ -9,6 +9,7 @@
 
 #include <iostream>
 
+
 boost::shared_ptr<google::protobuf::Message> g_echoMsg;
 
 char getch() {
@@ -32,13 +33,32 @@ char getch() {
         return (buf);
 }
 
-void poseCallback(ConstPosesStampedPtr &_msg)
-{
-    std::cout << _msg->time().DebugString() << std::endl;
-    for(int i = 0; i < _msg->pose_size(); i++)
-    {
-      std::cout << _msg->pose(i).DebugString() << std::endl;
+bool foundNameIndex = false;
+int nameIndex = 0;
+void poseCallback(ConstPosesStampedPtr &_msg) {
+//     std::cout << _msg->time().DebugString() << std::endl;
+    if(!foundNameIndex) {
+      for(int i = 0; i < _msg->pose_size(); i++) {
+	gazebo::msgs::Pose poseMsg = _msg->pose(i);
+	if(poseMsg.name().compare("SMORES6Uriah") == 0) {
+	  foundNameIndex = true;
+	  nameIndex = i;
+	}
+      }
     }
+    else{
+//       printf("Pose: x:%f\ty:%f\tz:%f, | x:%f\ty:%f\tz:%f\tw:%f\n", _msg->pose(nameIndex).position().x(), _msg->pose(nameIndex).position().y(), _msg->pose(nameIndex).position().z(),
+// 	     _msg->pose(nameIndex).orientation().x(), _msg->pose(nameIndex).orientation().y(), _msg->pose(nameIndex).orientation().z(), _msg->pose(nameIndex).orientation().w());
+    }
+}
+
+void lidarCallback(ConstLaserScanStampedPtr &msg) {
+  
+  int numPoint = msg->scan().ranges_size();
+  for(int i = 0; i < numPoint; i++) {
+    std::cout << msg->scan().ranges(i) << "\t";
+  }
+  
 }
 
 
@@ -63,9 +83,10 @@ int main(int argc, char **argv) {
     // subscribe to Pose topic
      std::string poseName = "/gazebo/default/pose/info";
      gazebo::transport::SubscriberPtr poseSub = node->Subscribe<gazebo::msgs::PosesStamped>(poseName, poseCallback);
-//      std::string msgTypeName = gazebo::transport::getTopicMsgType(node->DecodeTopicName(poseName));
-//      g_echoMsg = gazebo::msgs::MsgFactory::NewMsg(msgTypeName);
-//      gazebo::transport::SubscriberPtr poseSub = node->Subscribe(poseName, echoCB);
+
+    // subscribe to LIDAR message
+     std::string lidarName = "/gazebo/default/SMORES6Uriah/SMORES_LIDAR/model/range_sensor/scan";
+     gazebo::transport::SubscriberPtr lidarSub = node->Subscribe<gazebo::msgs::LaserScanStamped>(lidarName, lidarCallback);
     
         
     std::cout << "getting in to the loop..." << std::endl;
@@ -85,7 +106,7 @@ int main(int argc, char **argv) {
     while(true)
     {
 //       std::cin >> key_pressed;
-//       key_pressed = getch();
+      key_pressed = getch();
       switch(key_pressed)
       {
 	case 'i':
