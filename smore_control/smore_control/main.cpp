@@ -6,11 +6,16 @@
 #include <termios.h>
 
 #include "command_message.pb.h"
+#include <boost/thread.hpp>
 
 #include <iostream>
+#include "GLViewer.h"
 
-
+// global variables
 boost::shared_ptr<google::protobuf::Message> g_echoMsg;
+bool foundNameIndex = false;
+int nameIndex = 0;
+GLViewer* glViewer;
 
 char getch() {
   
@@ -33,8 +38,6 @@ char getch() {
         return (buf);
 }
 
-bool foundNameIndex = false;
-int nameIndex = 0;
 void poseCallback(ConstPosesStampedPtr &_msg) {
 //     std::cout << _msg->time().DebugString() << std::endl;
     if(!foundNameIndex) {
@@ -49,16 +52,29 @@ void poseCallback(ConstPosesStampedPtr &_msg) {
     else{
 //       printf("Pose: x:%f\ty:%f\tz:%f, | x:%f\ty:%f\tz:%f\tw:%f\n", _msg->pose(nameIndex).position().x(), _msg->pose(nameIndex).position().y(), _msg->pose(nameIndex).position().z(),
 // 	     _msg->pose(nameIndex).orientation().x(), _msg->pose(nameIndex).orientation().y(), _msg->pose(nameIndex).orientation().z(), _msg->pose(nameIndex).orientation().w());
+      printf("Got Pose @ %d:%d\n", _msg->time().sec(), _msg->time().nsec());
     }
 }
 
 void lidarCallback(ConstLaserScanStampedPtr &msg) {
   
   int numPoint = msg->scan().ranges_size();
-  for(int i = 0; i < numPoint; i++) {
-    std::cout << msg->scan().ranges(i) << "\t";
-  }
+//   for(int i = 0; i < numPoint; i++) {
+//     std::cout << msg->scan().ranges(i) << "\t";
+//   }
+  printf("Got Lidar @ %d:%d\n", msg->time().sec(), msg->time().nsec());
   
+}
+
+void GLViewerThread(int argc, char** argv) {
+  try{
+    glViewer = new GLViewer();
+    glViewer->Run(argc, argv);
+  }
+  catch(boost::thread_interrupted&) {
+    std::cout << "Thread is stopped" << std::endl;
+    return;
+  }
 }
 
 
@@ -72,13 +88,12 @@ int main(int argc, char **argv) {
     gazebo::transport::NodePtr node(new gazebo::transport::Node());
     node->Init("SMORES6Uriah");
     
-    // start transport(?)? what the hack is transport...?
-    
+    boost::thread t(&GLViewerThread, argc, argv);
+       
     // publish to a Gazebo topic
     std::string robotName = "SMORES6Uriah";
     std::string pubName = "~/" + robotName + "_world";
     gazebo::transport::PublisherPtr pub = node->Advertise<command_message::msgs::CommandMessage>(pubName);
-//     pub->WaitForConnection();
     
     // subscribe to Pose topic
      std::string poseName = "/gazebo/default/pose/info";

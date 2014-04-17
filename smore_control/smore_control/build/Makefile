@@ -57,6 +57,47 @@ edit_cache:
 edit_cache/fast: edit_cache
 .PHONY : edit_cache/fast
 
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: install/local
+.PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: install/strip
+.PHONY : install/strip/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+.PHONY : list_install_components/fast
+
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -99,6 +140,32 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named GLEW_1100
+
+# Build rule for target.
+GLEW_1100: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 GLEW_1100
+.PHONY : GLEW_1100
+
+# fast build rule for target.
+GLEW_1100/fast:
+	$(MAKE) -f CMakeFiles/GLEW_1100.dir/build.make CMakeFiles/GLEW_1100.dir/build
+.PHONY : GLEW_1100/fast
+
+#=============================================================================
+# Target rules for targets named GLViewer
+
+# Build rule for target.
+GLViewer: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 GLViewer
+.PHONY : GLViewer
+
+# fast build rule for target.
+GLViewer/fast:
+	$(MAKE) -f CMakeFiles/GLViewer.dir/build.make CMakeFiles/GLViewer.dir/build
+.PHONY : GLViewer/fast
+
+#=============================================================================
 # Target rules for targets named smore_control
 
 # Build rule for target.
@@ -110,6 +177,331 @@ smore_control: cmake_check_build_system
 smore_control/fast:
 	$(MAKE) -f CMakeFiles/smore_control.dir/build.make CMakeFiles/smore_control.dir/build
 .PHONY : smore_control/fast
+
+#=============================================================================
+# Target rules for targets named uninstall
+
+# Build rule for target.
+uninstall: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 uninstall
+.PHONY : uninstall
+
+# fast build rule for target.
+uninstall/fast:
+	$(MAKE) -f extern/glfw-3.0.4/CMakeFiles/uninstall.dir/build.make extern/glfw-3.0.4/CMakeFiles/uninstall.dir/build
+.PHONY : uninstall/fast
+
+#=============================================================================
+# Target rules for targets named glfw
+
+# Build rule for target.
+glfw: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 glfw
+.PHONY : glfw
+
+# fast build rule for target.
+glfw/fast:
+	$(MAKE) -f extern/glfw-3.0.4/src/CMakeFiles/glfw.dir/build.make extern/glfw-3.0.4/src/CMakeFiles/glfw.dir/build
+.PHONY : glfw/fast
+
+#=============================================================================
+# Target rules for targets named boing
+
+# Build rule for target.
+boing: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 boing
+.PHONY : boing
+
+# fast build rule for target.
+boing/fast:
+	$(MAKE) -f extern/glfw-3.0.4/examples/CMakeFiles/boing.dir/build.make extern/glfw-3.0.4/examples/CMakeFiles/boing.dir/build
+.PHONY : boing/fast
+
+#=============================================================================
+# Target rules for targets named gears
+
+# Build rule for target.
+gears: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gears
+.PHONY : gears
+
+# fast build rule for target.
+gears/fast:
+	$(MAKE) -f extern/glfw-3.0.4/examples/CMakeFiles/gears.dir/build.make extern/glfw-3.0.4/examples/CMakeFiles/gears.dir/build
+.PHONY : gears/fast
+
+#=============================================================================
+# Target rules for targets named heightmap
+
+# Build rule for target.
+heightmap: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 heightmap
+.PHONY : heightmap
+
+# fast build rule for target.
+heightmap/fast:
+	$(MAKE) -f extern/glfw-3.0.4/examples/CMakeFiles/heightmap.dir/build.make extern/glfw-3.0.4/examples/CMakeFiles/heightmap.dir/build
+.PHONY : heightmap/fast
+
+#=============================================================================
+# Target rules for targets named simple
+
+# Build rule for target.
+simple: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 simple
+.PHONY : simple
+
+# fast build rule for target.
+simple/fast:
+	$(MAKE) -f extern/glfw-3.0.4/examples/CMakeFiles/simple.dir/build.make extern/glfw-3.0.4/examples/CMakeFiles/simple.dir/build
+.PHONY : simple/fast
+
+#=============================================================================
+# Target rules for targets named splitview
+
+# Build rule for target.
+splitview: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 splitview
+.PHONY : splitview
+
+# fast build rule for target.
+splitview/fast:
+	$(MAKE) -f extern/glfw-3.0.4/examples/CMakeFiles/splitview.dir/build.make extern/glfw-3.0.4/examples/CMakeFiles/splitview.dir/build
+.PHONY : splitview/fast
+
+#=============================================================================
+# Target rules for targets named wave
+
+# Build rule for target.
+wave: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 wave
+.PHONY : wave
+
+# fast build rule for target.
+wave/fast:
+	$(MAKE) -f extern/glfw-3.0.4/examples/CMakeFiles/wave.dir/build.make extern/glfw-3.0.4/examples/CMakeFiles/wave.dir/build
+.PHONY : wave/fast
+
+#=============================================================================
+# Target rules for targets named accuracy
+
+# Build rule for target.
+accuracy: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 accuracy
+.PHONY : accuracy
+
+# fast build rule for target.
+accuracy/fast:
+	$(MAKE) -f extern/glfw-3.0.4/tests/CMakeFiles/accuracy.dir/build.make extern/glfw-3.0.4/tests/CMakeFiles/accuracy.dir/build
+.PHONY : accuracy/fast
+
+#=============================================================================
+# Target rules for targets named clipboard
+
+# Build rule for target.
+clipboard: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 clipboard
+.PHONY : clipboard
+
+# fast build rule for target.
+clipboard/fast:
+	$(MAKE) -f extern/glfw-3.0.4/tests/CMakeFiles/clipboard.dir/build.make extern/glfw-3.0.4/tests/CMakeFiles/clipboard.dir/build
+.PHONY : clipboard/fast
+
+#=============================================================================
+# Target rules for targets named defaults
+
+# Build rule for target.
+defaults: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 defaults
+.PHONY : defaults
+
+# fast build rule for target.
+defaults/fast:
+	$(MAKE) -f extern/glfw-3.0.4/tests/CMakeFiles/defaults.dir/build.make extern/glfw-3.0.4/tests/CMakeFiles/defaults.dir/build
+.PHONY : defaults/fast
+
+#=============================================================================
+# Target rules for targets named events
+
+# Build rule for target.
+events: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 events
+.PHONY : events
+
+# fast build rule for target.
+events/fast:
+	$(MAKE) -f extern/glfw-3.0.4/tests/CMakeFiles/events.dir/build.make extern/glfw-3.0.4/tests/CMakeFiles/events.dir/build
+.PHONY : events/fast
+
+#=============================================================================
+# Target rules for targets named fsaa
+
+# Build rule for target.
+fsaa: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fsaa
+.PHONY : fsaa
+
+# fast build rule for target.
+fsaa/fast:
+	$(MAKE) -f extern/glfw-3.0.4/tests/CMakeFiles/fsaa.dir/build.make extern/glfw-3.0.4/tests/CMakeFiles/fsaa.dir/build
+.PHONY : fsaa/fast
+
+#=============================================================================
+# Target rules for targets named gamma
+
+# Build rule for target.
+gamma: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gamma
+.PHONY : gamma
+
+# fast build rule for target.
+gamma/fast:
+	$(MAKE) -f extern/glfw-3.0.4/tests/CMakeFiles/gamma.dir/build.make extern/glfw-3.0.4/tests/CMakeFiles/gamma.dir/build
+.PHONY : gamma/fast
+
+#=============================================================================
+# Target rules for targets named glfwinfo
+
+# Build rule for target.
+glfwinfo: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 glfwinfo
+.PHONY : glfwinfo
+
+# fast build rule for target.
+glfwinfo/fast:
+	$(MAKE) -f extern/glfw-3.0.4/tests/CMakeFiles/glfwinfo.dir/build.make extern/glfw-3.0.4/tests/CMakeFiles/glfwinfo.dir/build
+.PHONY : glfwinfo/fast
+
+#=============================================================================
+# Target rules for targets named iconify
+
+# Build rule for target.
+iconify: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 iconify
+.PHONY : iconify
+
+# fast build rule for target.
+iconify/fast:
+	$(MAKE) -f extern/glfw-3.0.4/tests/CMakeFiles/iconify.dir/build.make extern/glfw-3.0.4/tests/CMakeFiles/iconify.dir/build
+.PHONY : iconify/fast
+
+#=============================================================================
+# Target rules for targets named joysticks
+
+# Build rule for target.
+joysticks: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 joysticks
+.PHONY : joysticks
+
+# fast build rule for target.
+joysticks/fast:
+	$(MAKE) -f extern/glfw-3.0.4/tests/CMakeFiles/joysticks.dir/build.make extern/glfw-3.0.4/tests/CMakeFiles/joysticks.dir/build
+.PHONY : joysticks/fast
+
+#=============================================================================
+# Target rules for targets named modes
+
+# Build rule for target.
+modes: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 modes
+.PHONY : modes
+
+# fast build rule for target.
+modes/fast:
+	$(MAKE) -f extern/glfw-3.0.4/tests/CMakeFiles/modes.dir/build.make extern/glfw-3.0.4/tests/CMakeFiles/modes.dir/build
+.PHONY : modes/fast
+
+#=============================================================================
+# Target rules for targets named peter
+
+# Build rule for target.
+peter: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 peter
+.PHONY : peter
+
+# fast build rule for target.
+peter/fast:
+	$(MAKE) -f extern/glfw-3.0.4/tests/CMakeFiles/peter.dir/build.make extern/glfw-3.0.4/tests/CMakeFiles/peter.dir/build
+.PHONY : peter/fast
+
+#=============================================================================
+# Target rules for targets named reopen
+
+# Build rule for target.
+reopen: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 reopen
+.PHONY : reopen
+
+# fast build rule for target.
+reopen/fast:
+	$(MAKE) -f extern/glfw-3.0.4/tests/CMakeFiles/reopen.dir/build.make extern/glfw-3.0.4/tests/CMakeFiles/reopen.dir/build
+.PHONY : reopen/fast
+
+#=============================================================================
+# Target rules for targets named sharing
+
+# Build rule for target.
+sharing: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sharing
+.PHONY : sharing
+
+# fast build rule for target.
+sharing/fast:
+	$(MAKE) -f extern/glfw-3.0.4/tests/CMakeFiles/sharing.dir/build.make extern/glfw-3.0.4/tests/CMakeFiles/sharing.dir/build
+.PHONY : sharing/fast
+
+#=============================================================================
+# Target rules for targets named tearing
+
+# Build rule for target.
+tearing: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tearing
+.PHONY : tearing
+
+# fast build rule for target.
+tearing/fast:
+	$(MAKE) -f extern/glfw-3.0.4/tests/CMakeFiles/tearing.dir/build.make extern/glfw-3.0.4/tests/CMakeFiles/tearing.dir/build
+.PHONY : tearing/fast
+
+#=============================================================================
+# Target rules for targets named threads
+
+# Build rule for target.
+threads: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 threads
+.PHONY : threads
+
+# fast build rule for target.
+threads/fast:
+	$(MAKE) -f extern/glfw-3.0.4/tests/CMakeFiles/threads.dir/build.make extern/glfw-3.0.4/tests/CMakeFiles/threads.dir/build
+.PHONY : threads/fast
+
+#=============================================================================
+# Target rules for targets named title
+
+# Build rule for target.
+title: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 title
+.PHONY : title
+
+# fast build rule for target.
+title/fast:
+	$(MAKE) -f extern/glfw-3.0.4/tests/CMakeFiles/title.dir/build.make extern/glfw-3.0.4/tests/CMakeFiles/title.dir/build
+.PHONY : title/fast
+
+#=============================================================================
+# Target rules for targets named windows
+
+# Build rule for target.
+windows: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 windows
+.PHONY : windows
+
+# fast build rule for target.
+windows/fast:
+	$(MAKE) -f extern/glfw-3.0.4/tests/CMakeFiles/windows.dir/build.make extern/glfw-3.0.4/tests/CMakeFiles/windows.dir/build
+.PHONY : windows/fast
 
 #=============================================================================
 # Target rules for targets named collision_message_plus
@@ -136,6 +528,54 @@ command_message: cmake_check_build_system
 command_message/fast:
 	$(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/build
 .PHONY : command_message/fast
+
+GLViewer.o: GLViewer.cpp.o
+.PHONY : GLViewer.o
+
+# target to build an object file
+GLViewer.cpp.o:
+	$(MAKE) -f CMakeFiles/GLViewer.dir/build.make CMakeFiles/GLViewer.dir/GLViewer.cpp.o
+.PHONY : GLViewer.cpp.o
+
+GLViewer.i: GLViewer.cpp.i
+.PHONY : GLViewer.i
+
+# target to preprocess a source file
+GLViewer.cpp.i:
+	$(MAKE) -f CMakeFiles/GLViewer.dir/build.make CMakeFiles/GLViewer.dir/GLViewer.cpp.i
+.PHONY : GLViewer.cpp.i
+
+GLViewer.s: GLViewer.cpp.s
+.PHONY : GLViewer.s
+
+# target to generate assembly for a file
+GLViewer.cpp.s:
+	$(MAKE) -f CMakeFiles/GLViewer.dir/build.make CMakeFiles/GLViewer.dir/GLViewer.cpp.s
+.PHONY : GLViewer.cpp.s
+
+extern/glew-1.10.0/src/glew.o: extern/glew-1.10.0/src/glew.c.o
+.PHONY : extern/glew-1.10.0/src/glew.o
+
+# target to build an object file
+extern/glew-1.10.0/src/glew.c.o:
+	$(MAKE) -f CMakeFiles/GLEW_1100.dir/build.make CMakeFiles/GLEW_1100.dir/extern/glew-1.10.0/src/glew.c.o
+.PHONY : extern/glew-1.10.0/src/glew.c.o
+
+extern/glew-1.10.0/src/glew.i: extern/glew-1.10.0/src/glew.c.i
+.PHONY : extern/glew-1.10.0/src/glew.i
+
+# target to preprocess a source file
+extern/glew-1.10.0/src/glew.c.i:
+	$(MAKE) -f CMakeFiles/GLEW_1100.dir/build.make CMakeFiles/GLEW_1100.dir/extern/glew-1.10.0/src/glew.c.i
+.PHONY : extern/glew-1.10.0/src/glew.c.i
+
+extern/glew-1.10.0/src/glew.s: extern/glew-1.10.0/src/glew.c.s
+.PHONY : extern/glew-1.10.0/src/glew.s
+
+# target to generate assembly for a file
+extern/glew-1.10.0/src/glew.c.s:
+	$(MAKE) -f CMakeFiles/GLEW_1100.dir/build.make CMakeFiles/GLEW_1100.dir/extern/glew-1.10.0/src/glew.c.s
+.PHONY : extern/glew-1.10.0/src/glew.c.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -167,11 +607,48 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... GLEW_1100"
+	@echo "... GLViewer"
 	@echo "... edit_cache"
+	@echo "... install"
+	@echo "... install/local"
+	@echo "... install/strip"
+	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... smore_control"
+	@echo "... uninstall"
+	@echo "... glfw"
+	@echo "... boing"
+	@echo "... gears"
+	@echo "... heightmap"
+	@echo "... simple"
+	@echo "... splitview"
+	@echo "... wave"
+	@echo "... accuracy"
+	@echo "... clipboard"
+	@echo "... defaults"
+	@echo "... events"
+	@echo "... fsaa"
+	@echo "... gamma"
+	@echo "... glfwinfo"
+	@echo "... iconify"
+	@echo "... joysticks"
+	@echo "... modes"
+	@echo "... peter"
+	@echo "... reopen"
+	@echo "... sharing"
+	@echo "... tearing"
+	@echo "... threads"
+	@echo "... title"
+	@echo "... windows"
 	@echo "... collision_message_plus"
 	@echo "... command_message"
+	@echo "... GLViewer.o"
+	@echo "... GLViewer.i"
+	@echo "... GLViewer.s"
+	@echo "... extern/glew-1.10.0/src/glew.o"
+	@echo "... extern/glew-1.10.0/src/glew.i"
+	@echo "... extern/glew-1.10.0/src/glew.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

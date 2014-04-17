@@ -12,4 +12,7 @@ SET(CMAKE_CXX_COMPILER_ID "GNU")
 SET(CMAKE_TARGET_LINKED_INFO_FILES
   "/home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs/CMakeFiles/command_message.dir/DependInfo.cmake"
   "/home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs/CMakeFiles/collision_message_plus.dir/DependInfo.cmake"
+  "/home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/CMakeFiles/GLViewer.dir/DependInfo.cmake"
+  "/home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/extern/glfw-3.0.4/src/CMakeFiles/glfw.dir/DependInfo.cmake"
+  "/home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/CMakeFiles/GLEW_1100.dir/DependInfo.cmake"
   )

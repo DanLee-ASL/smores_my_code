@@ -34,6 +34,7 @@ ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
+  INCLUDE("/home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/extern/glfw-3.0.4/cmake_install.cmake")
   INCLUDE("/home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)

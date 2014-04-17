@@ -10,6 +10,8 @@ SET(CMAKE_FORCE_UNIX_PATHS 1)
 
 # The C and CXX include file search paths:
 SET(CMAKE_C_INCLUDE_PATH
+  "../extern/glfw-3.0.4/include"
+  "../extern/glew-1.10.0/include"
   "/usr/include/gazebo-1.9"
   "/usr/include/gazebo-1.9/gazebo"
   "/usr/include/sdformat-1.4"

@@ -6,6 +6,24 @@
 
 #IncludeRegexTransform: 
 
+../extern/glew-1.10.0/include/GL/glew.h
+stddef.h
+-
+inttypes.h
+-
+stdint.h
+-
+inttypes.h
+-
+OpenGL/glu.h
+-
+GL/glu.h
+-
+
+/home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/GLViewer.h
+GL/glew.h
+-
+
 /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/main.cpp
 gazebo/transport/transport.hh
 -
@@ -21,8 +39,12 @@ termios.h
 -
 command_message.pb.h
 /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/command_message.pb.h
+boost/thread.hpp
+-
 iostream
 -
+GLViewer.h
+/home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/GLViewer.h
 
 /usr/include/gazebo-1.9/gazebo/Master.hh
 string
