@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control
+CMAKE_SOURCE_DIR = /home/daniel/Desktop/repo/my_code/smore_control/smore_control
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build
+CMAKE_BINARY_DIR = /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -110,9 +110,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/CMakeFiles /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/CMakeFiles /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -166,6 +166,19 @@ GLViewer/fast:
 .PHONY : GLViewer/fast
 
 #=============================================================================
+# Target rules for targets named PCL_OCTREE
+
+# Build rule for target.
+PCL_OCTREE: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 PCL_OCTREE
+.PHONY : PCL_OCTREE
+
+# fast build rule for target.
+PCL_OCTREE/fast:
+	$(MAKE) -f CMakeFiles/PCL_OCTREE.dir/build.make CMakeFiles/PCL_OCTREE.dir/build
+.PHONY : PCL_OCTREE/fast
+
+#=============================================================================
 # Target rules for targets named smore_control
 
 # Build rule for target.
@@ -177,6 +190,19 @@ smore_control: cmake_check_build_system
 smore_control/fast:
 	$(MAKE) -f CMakeFiles/smore_control.dir/build.make CMakeFiles/smore_control.dir/build
 .PHONY : smore_control/fast
+
+#=============================================================================
+# Target rules for targets named zprdemo
+
+# Build rule for target.
+zprdemo: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 zprdemo
+.PHONY : zprdemo
+
+# fast build rule for target.
+zprdemo/fast:
+	$(MAKE) -f CMakeFiles/zprdemo.dir/build.make CMakeFiles/zprdemo.dir/build
+.PHONY : zprdemo/fast
 
 #=============================================================================
 # Target rules for targets named uninstall
@@ -601,6 +627,81 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/smore_control.dir/build.make CMakeFiles/smore_control.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+pcl_octree_impl.o: pcl_octree_impl.cpp.o
+.PHONY : pcl_octree_impl.o
+
+# target to build an object file
+pcl_octree_impl.cpp.o:
+	$(MAKE) -f CMakeFiles/PCL_OCTREE.dir/build.make CMakeFiles/PCL_OCTREE.dir/pcl_octree_impl.cpp.o
+.PHONY : pcl_octree_impl.cpp.o
+
+pcl_octree_impl.i: pcl_octree_impl.cpp.i
+.PHONY : pcl_octree_impl.i
+
+# target to preprocess a source file
+pcl_octree_impl.cpp.i:
+	$(MAKE) -f CMakeFiles/PCL_OCTREE.dir/build.make CMakeFiles/PCL_OCTREE.dir/pcl_octree_impl.cpp.i
+.PHONY : pcl_octree_impl.cpp.i
+
+pcl_octree_impl.s: pcl_octree_impl.cpp.s
+.PHONY : pcl_octree_impl.s
+
+# target to generate assembly for a file
+pcl_octree_impl.cpp.s:
+	$(MAKE) -f CMakeFiles/PCL_OCTREE.dir/build.make CMakeFiles/PCL_OCTREE.dir/pcl_octree_impl.cpp.s
+.PHONY : pcl_octree_impl.cpp.s
+
+zpr.o: zpr.c.o
+.PHONY : zpr.o
+
+# target to build an object file
+zpr.c.o:
+	$(MAKE) -f CMakeFiles/GLViewer.dir/build.make CMakeFiles/GLViewer.dir/zpr.c.o
+	$(MAKE) -f CMakeFiles/zprdemo.dir/build.make CMakeFiles/zprdemo.dir/zpr.c.o
+.PHONY : zpr.c.o
+
+zpr.i: zpr.c.i
+.PHONY : zpr.i
+
+# target to preprocess a source file
+zpr.c.i:
+	$(MAKE) -f CMakeFiles/GLViewer.dir/build.make CMakeFiles/GLViewer.dir/zpr.c.i
+	$(MAKE) -f CMakeFiles/zprdemo.dir/build.make CMakeFiles/zprdemo.dir/zpr.c.i
+.PHONY : zpr.c.i
+
+zpr.s: zpr.c.s
+.PHONY : zpr.s
+
+# target to generate assembly for a file
+zpr.c.s:
+	$(MAKE) -f CMakeFiles/GLViewer.dir/build.make CMakeFiles/GLViewer.dir/zpr.c.s
+	$(MAKE) -f CMakeFiles/zprdemo.dir/build.make CMakeFiles/zprdemo.dir/zpr.c.s
+.PHONY : zpr.c.s
+
+zprdemo.o: zprdemo.c.o
+.PHONY : zprdemo.o
+
+# target to build an object file
+zprdemo.c.o:
+	$(MAKE) -f CMakeFiles/zprdemo.dir/build.make CMakeFiles/zprdemo.dir/zprdemo.c.o
+.PHONY : zprdemo.c.o
+
+zprdemo.i: zprdemo.c.i
+.PHONY : zprdemo.i
+
+# target to preprocess a source file
+zprdemo.c.i:
+	$(MAKE) -f CMakeFiles/zprdemo.dir/build.make CMakeFiles/zprdemo.dir/zprdemo.c.i
+.PHONY : zprdemo.c.i
+
+zprdemo.s: zprdemo.c.s
+.PHONY : zprdemo.s
+
+# target to generate assembly for a file
+zprdemo.c.s:
+	$(MAKE) -f CMakeFiles/zprdemo.dir/build.make CMakeFiles/zprdemo.dir/zprdemo.c.s
+.PHONY : zprdemo.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -609,6 +710,7 @@ help:
 	@echo "... depend"
 	@echo "... GLEW_1100"
 	@echo "... GLViewer"
+	@echo "... PCL_OCTREE"
 	@echo "... edit_cache"
 	@echo "... install"
 	@echo "... install/local"
@@ -616,6 +718,7 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... smore_control"
+	@echo "... zprdemo"
 	@echo "... uninstall"
 	@echo "... glfw"
 	@echo "... boing"
@@ -652,6 +755,15 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... pcl_octree_impl.o"
+	@echo "... pcl_octree_impl.i"
+	@echo "... pcl_octree_impl.s"
+	@echo "... zpr.o"
+	@echo "... zpr.i"
+	@echo "... zpr.s"
+	@echo "... zprdemo.o"
+	@echo "... zprdemo.i"
+	@echo "... zprdemo.s"
 .PHONY : help
 
 

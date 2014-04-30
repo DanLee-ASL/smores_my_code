@@ -2,12 +2,12 @@
 BuildItems=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x01\x00\x00\x00\x0b\x00\x00\x00\x00\x01\x00\x00\x00\x1a\x00s\x00m\x00o\x00r\x00e\x00_\x00c\x00o\x00n\x00t\x00r\x00o\x00l)
 
 [CMake]
-BuildDirs=/home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build
+BuildDirs[$e]=$HOME/Desktop/modular_robots/my_code/smore_control/smore_control/build,$HOME/Desktop/repo/my_code/smore_control/smore_control/build
 CMakeDir=/usr/share/cmake-2.8/Modules
 Current CMake Binary=file:///usr/bin/cmake
-CurrentBuildDir=file:///home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build
-CurrentBuildType=Debug
-CurrentInstallDir=
+CurrentBuildDir=file:///home/daniel/Desktop/repo/my_code/smore_control/smore_control/build
+CurrentBuildType=Release
+CurrentInstallDir=file:///usr/local
 Extra Arguments=
 ProjectRootRelative=./
 
@@ -31,6 +31,9 @@ Project Target=smore_control,smore_control
 Use External Terminal=false
 Working Directory=
 isExecutable=false
+
+[MakeBuilder]
+Number Of Jobs=1
 
 [Project]
 VersionControlSupport=kdevgit

@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control
+CMAKE_SOURCE_DIR = /home/daniel/Desktop/repo/my_code/smore_control/smore_control
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build
+CMAKE_BINARY_DIR = /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build
 
 # Include any dependencies generated for this target.
 include msgs/CMakeFiles/collision_message_plus.dir/depend.make
@@ -51,17 +51,17 @@ include msgs/CMakeFiles/collision_message_plus.dir/flags.make
 
 msgs/CMakeFiles/collision_message_plus.dir/collision_message_plus.pb.cc.o: msgs/CMakeFiles/collision_message_plus.dir/flags.make
 msgs/CMakeFiles/collision_message_plus.dir/collision_message_plus.pb.cc.o: msgs/collision_message_plus.pb.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object msgs/CMakeFiles/collision_message_plus.dir/collision_message_plus.pb.cc.o"
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/collision_message_plus.dir/collision_message_plus.pb.cc.o -c /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs/collision_message_plus.pb.cc
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/collision_message_plus.dir/collision_message_plus.pb.cc.o -c /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs/collision_message_plus.pb.cc
 
 msgs/CMakeFiles/collision_message_plus.dir/collision_message_plus.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/collision_message_plus.dir/collision_message_plus.pb.cc.i"
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs/collision_message_plus.pb.cc > CMakeFiles/collision_message_plus.dir/collision_message_plus.pb.cc.i
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs/collision_message_plus.pb.cc > CMakeFiles/collision_message_plus.dir/collision_message_plus.pb.cc.i
 
 msgs/CMakeFiles/collision_message_plus.dir/collision_message_plus.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/collision_message_plus.dir/collision_message_plus.pb.cc.s"
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs/collision_message_plus.pb.cc -o CMakeFiles/collision_message_plus.dir/collision_message_plus.pb.cc.s
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs/collision_message_plus.pb.cc -o CMakeFiles/collision_message_plus.dir/collision_message_plus.pb.cc.s
 
 msgs/CMakeFiles/collision_message_plus.dir/collision_message_plus.pb.cc.o.requires:
 .PHONY : msgs/CMakeFiles/collision_message_plus.dir/collision_message_plus.pb.cc.o.requires
@@ -74,17 +74,17 @@ msgs/CMakeFiles/collision_message_plus.dir/collision_message_plus.pb.cc.o.provid
 
 msgs/CMakeFiles/collision_message_plus.dir/command_message.pb.cc.o: msgs/CMakeFiles/collision_message_plus.dir/flags.make
 msgs/CMakeFiles/collision_message_plus.dir/command_message.pb.cc.o: msgs/command_message.pb.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object msgs/CMakeFiles/collision_message_plus.dir/command_message.pb.cc.o"
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/collision_message_plus.dir/command_message.pb.cc.o -c /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs/command_message.pb.cc
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/collision_message_plus.dir/command_message.pb.cc.o -c /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs/command_message.pb.cc
 
 msgs/CMakeFiles/collision_message_plus.dir/command_message.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/collision_message_plus.dir/command_message.pb.cc.i"
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs/command_message.pb.cc > CMakeFiles/collision_message_plus.dir/command_message.pb.cc.i
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs/command_message.pb.cc > CMakeFiles/collision_message_plus.dir/command_message.pb.cc.i
 
 msgs/CMakeFiles/collision_message_plus.dir/command_message.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/collision_message_plus.dir/command_message.pb.cc.s"
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs/command_message.pb.cc -o CMakeFiles/collision_message_plus.dir/command_message.pb.cc.s
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs/command_message.pb.cc -o CMakeFiles/collision_message_plus.dir/command_message.pb.cc.s
 
 msgs/CMakeFiles/collision_message_plus.dir/command_message.pb.cc.o.requires:
 .PHONY : msgs/CMakeFiles/collision_message_plus.dir/command_message.pb.cc.o.requires
@@ -97,17 +97,17 @@ msgs/CMakeFiles/collision_message_plus.dir/command_message.pb.cc.o.provides.buil
 
 msgs/CMakeFiles/collision_message_plus.dir/pose.pb.cc.o: msgs/CMakeFiles/collision_message_plus.dir/flags.make
 msgs/CMakeFiles/collision_message_plus.dir/pose.pb.cc.o: msgs/pose.pb.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object msgs/CMakeFiles/collision_message_plus.dir/pose.pb.cc.o"
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/collision_message_plus.dir/pose.pb.cc.o -c /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs/pose.pb.cc
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/collision_message_plus.dir/pose.pb.cc.o -c /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs/pose.pb.cc
 
 msgs/CMakeFiles/collision_message_plus.dir/pose.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/collision_message_plus.dir/pose.pb.cc.i"
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs/pose.pb.cc > CMakeFiles/collision_message_plus.dir/pose.pb.cc.i
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs/pose.pb.cc > CMakeFiles/collision_message_plus.dir/pose.pb.cc.i
 
 msgs/CMakeFiles/collision_message_plus.dir/pose.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/collision_message_plus.dir/pose.pb.cc.s"
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs/pose.pb.cc -o CMakeFiles/collision_message_plus.dir/pose.pb.cc.s
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs/pose.pb.cc -o CMakeFiles/collision_message_plus.dir/pose.pb.cc.s
 
 msgs/CMakeFiles/collision_message_plus.dir/pose.pb.cc.o.requires:
 .PHONY : msgs/CMakeFiles/collision_message_plus.dir/pose.pb.cc.o.requires
@@ -120,17 +120,17 @@ msgs/CMakeFiles/collision_message_plus.dir/pose.pb.cc.o.provides.build: msgs/CMa
 
 msgs/CMakeFiles/collision_message_plus.dir/vector3d.pb.cc.o: msgs/CMakeFiles/collision_message_plus.dir/flags.make
 msgs/CMakeFiles/collision_message_plus.dir/vector3d.pb.cc.o: msgs/vector3d.pb.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object msgs/CMakeFiles/collision_message_plus.dir/vector3d.pb.cc.o"
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/collision_message_plus.dir/vector3d.pb.cc.o -c /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs/vector3d.pb.cc
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/collision_message_plus.dir/vector3d.pb.cc.o -c /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs/vector3d.pb.cc
 
 msgs/CMakeFiles/collision_message_plus.dir/vector3d.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/collision_message_plus.dir/vector3d.pb.cc.i"
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs/vector3d.pb.cc > CMakeFiles/collision_message_plus.dir/vector3d.pb.cc.i
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs/vector3d.pb.cc > CMakeFiles/collision_message_plus.dir/vector3d.pb.cc.i
 
 msgs/CMakeFiles/collision_message_plus.dir/vector3d.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/collision_message_plus.dir/vector3d.pb.cc.s"
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs/vector3d.pb.cc -o CMakeFiles/collision_message_plus.dir/vector3d.pb.cc.s
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs/vector3d.pb.cc -o CMakeFiles/collision_message_plus.dir/vector3d.pb.cc.s
 
 msgs/CMakeFiles/collision_message_plus.dir/vector3d.pb.cc.o.requires:
 .PHONY : msgs/CMakeFiles/collision_message_plus.dir/vector3d.pb.cc.o.requires
@@ -143,17 +143,17 @@ msgs/CMakeFiles/collision_message_plus.dir/vector3d.pb.cc.o.provides.build: msgs
 
 msgs/CMakeFiles/collision_message_plus.dir/quaternion.pb.cc.o: msgs/CMakeFiles/collision_message_plus.dir/flags.make
 msgs/CMakeFiles/collision_message_plus.dir/quaternion.pb.cc.o: msgs/quaternion.pb.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object msgs/CMakeFiles/collision_message_plus.dir/quaternion.pb.cc.o"
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/collision_message_plus.dir/quaternion.pb.cc.o -c /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs/quaternion.pb.cc
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/collision_message_plus.dir/quaternion.pb.cc.o -c /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs/quaternion.pb.cc
 
 msgs/CMakeFiles/collision_message_plus.dir/quaternion.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/collision_message_plus.dir/quaternion.pb.cc.i"
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs/quaternion.pb.cc > CMakeFiles/collision_message_plus.dir/quaternion.pb.cc.i
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs/quaternion.pb.cc > CMakeFiles/collision_message_plus.dir/quaternion.pb.cc.i
 
 msgs/CMakeFiles/collision_message_plus.dir/quaternion.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/collision_message_plus.dir/quaternion.pb.cc.s"
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs/quaternion.pb.cc -o CMakeFiles/collision_message_plus.dir/quaternion.pb.cc.s
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs/quaternion.pb.cc -o CMakeFiles/collision_message_plus.dir/quaternion.pb.cc.s
 
 msgs/CMakeFiles/collision_message_plus.dir/quaternion.pb.cc.o.requires:
 .PHONY : msgs/CMakeFiles/collision_message_plus.dir/quaternion.pb.cc.o.requires
@@ -166,17 +166,17 @@ msgs/CMakeFiles/collision_message_plus.dir/quaternion.pb.cc.o.provides.build: ms
 
 msgs/CMakeFiles/collision_message_plus.dir/header.pb.cc.o: msgs/CMakeFiles/collision_message_plus.dir/flags.make
 msgs/CMakeFiles/collision_message_plus.dir/header.pb.cc.o: msgs/header.pb.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object msgs/CMakeFiles/collision_message_plus.dir/header.pb.cc.o"
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/collision_message_plus.dir/header.pb.cc.o -c /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs/header.pb.cc
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/collision_message_plus.dir/header.pb.cc.o -c /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs/header.pb.cc
 
 msgs/CMakeFiles/collision_message_plus.dir/header.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/collision_message_plus.dir/header.pb.cc.i"
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs/header.pb.cc > CMakeFiles/collision_message_plus.dir/header.pb.cc.i
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs/header.pb.cc > CMakeFiles/collision_message_plus.dir/header.pb.cc.i
 
 msgs/CMakeFiles/collision_message_plus.dir/header.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/collision_message_plus.dir/header.pb.cc.s"
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs/header.pb.cc -o CMakeFiles/collision_message_plus.dir/header.pb.cc.s
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs/header.pb.cc -o CMakeFiles/collision_message_plus.dir/header.pb.cc.s
 
 msgs/CMakeFiles/collision_message_plus.dir/header.pb.cc.o.requires:
 .PHONY : msgs/CMakeFiles/collision_message_plus.dir/header.pb.cc.o.requires
@@ -189,17 +189,17 @@ msgs/CMakeFiles/collision_message_plus.dir/header.pb.cc.o.provides.build: msgs/C
 
 msgs/CMakeFiles/collision_message_plus.dir/time.pb.cc.o: msgs/CMakeFiles/collision_message_plus.dir/flags.make
 msgs/CMakeFiles/collision_message_plus.dir/time.pb.cc.o: msgs/time.pb.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object msgs/CMakeFiles/collision_message_plus.dir/time.pb.cc.o"
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/collision_message_plus.dir/time.pb.cc.o -c /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs/time.pb.cc
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/collision_message_plus.dir/time.pb.cc.o -c /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs/time.pb.cc
 
 msgs/CMakeFiles/collision_message_plus.dir/time.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/collision_message_plus.dir/time.pb.cc.i"
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs/time.pb.cc > CMakeFiles/collision_message_plus.dir/time.pb.cc.i
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs/time.pb.cc > CMakeFiles/collision_message_plus.dir/time.pb.cc.i
 
 msgs/CMakeFiles/collision_message_plus.dir/time.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/collision_message_plus.dir/time.pb.cc.s"
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs/time.pb.cc -o CMakeFiles/collision_message_plus.dir/time.pb.cc.s
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs/time.pb.cc -o CMakeFiles/collision_message_plus.dir/time.pb.cc.s
 
 msgs/CMakeFiles/collision_message_plus.dir/time.pb.cc.o.requires:
 .PHONY : msgs/CMakeFiles/collision_message_plus.dir/time.pb.cc.o.requires
@@ -211,51 +211,51 @@ msgs/CMakeFiles/collision_message_plus.dir/time.pb.cc.o.provides: msgs/CMakeFile
 msgs/CMakeFiles/collision_message_plus.dir/time.pb.cc.o.provides.build: msgs/CMakeFiles/collision_message_plus.dir/time.pb.cc.o
 
 msgs/collision_message_plus.pb.cc: ../msgs/collision_message_plus.proto
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Running C++ protocol buffer compiler on collision_message_plus.proto"
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs && /usr/bin/protoc --cpp_out /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs -I /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/msgs -I /usr/include/gazebo-1.9/gazebo/msgs/proto /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/msgs/collision_message_plus.proto
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs && /usr/bin/protoc --cpp_out /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs -I /home/daniel/Desktop/repo/my_code/smore_control/smore_control/msgs -I /usr/include/gazebo-1.9/gazebo/msgs/proto /home/daniel/Desktop/repo/my_code/smore_control/smore_control/msgs/collision_message_plus.proto
 
 msgs/collision_message_plus.pb.h: msgs/collision_message_plus.pb.cc
 
 msgs/command_message.pb.cc: ../msgs/command_message.proto
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/CMakeFiles $(CMAKE_PROGRESS_9)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Running C++ protocol buffer compiler on command_message.proto"
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs && /usr/bin/protoc --cpp_out /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs -I /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/msgs -I /usr/include/gazebo-1.9/gazebo/msgs/proto /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/msgs/command_message.proto
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs && /usr/bin/protoc --cpp_out /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs -I /home/daniel/Desktop/repo/my_code/smore_control/smore_control/msgs -I /usr/include/gazebo-1.9/gazebo/msgs/proto /home/daniel/Desktop/repo/my_code/smore_control/smore_control/msgs/command_message.proto
 
 msgs/command_message.pb.h: msgs/command_message.pb.cc
 
 msgs/pose.pb.cc: /usr/include/gazebo-1.9/gazebo/msgs/proto/pose.proto
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/CMakeFiles $(CMAKE_PROGRESS_10)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Running C++ protocol buffer compiler on /usr/include/gazebo-1.9/gazebo/msgs/proto/pose.proto"
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs && /usr/bin/protoc --cpp_out /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs -I /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/msgs -I /usr/include/gazebo-1.9/gazebo/msgs/proto /usr/include/gazebo-1.9/gazebo/msgs/proto/pose.proto
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs && /usr/bin/protoc --cpp_out /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs -I /home/daniel/Desktop/repo/my_code/smore_control/smore_control/msgs -I /usr/include/gazebo-1.9/gazebo/msgs/proto /usr/include/gazebo-1.9/gazebo/msgs/proto/pose.proto
 
 msgs/pose.pb.h: msgs/pose.pb.cc
 
 msgs/vector3d.pb.cc: /usr/include/gazebo-1.9/gazebo/msgs/proto/vector3d.proto
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/CMakeFiles $(CMAKE_PROGRESS_11)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/CMakeFiles $(CMAKE_PROGRESS_11)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Running C++ protocol buffer compiler on /usr/include/gazebo-1.9/gazebo/msgs/proto/vector3d.proto"
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs && /usr/bin/protoc --cpp_out /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs -I /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/msgs -I /usr/include/gazebo-1.9/gazebo/msgs/proto /usr/include/gazebo-1.9/gazebo/msgs/proto/vector3d.proto
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs && /usr/bin/protoc --cpp_out /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs -I /home/daniel/Desktop/repo/my_code/smore_control/smore_control/msgs -I /usr/include/gazebo-1.9/gazebo/msgs/proto /usr/include/gazebo-1.9/gazebo/msgs/proto/vector3d.proto
 
 msgs/vector3d.pb.h: msgs/vector3d.pb.cc
 
 msgs/quaternion.pb.cc: /usr/include/gazebo-1.9/gazebo/msgs/proto/quaternion.proto
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/CMakeFiles $(CMAKE_PROGRESS_12)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/CMakeFiles $(CMAKE_PROGRESS_12)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Running C++ protocol buffer compiler on /usr/include/gazebo-1.9/gazebo/msgs/proto/quaternion.proto"
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs && /usr/bin/protoc --cpp_out /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs -I /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/msgs -I /usr/include/gazebo-1.9/gazebo/msgs/proto /usr/include/gazebo-1.9/gazebo/msgs/proto/quaternion.proto
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs && /usr/bin/protoc --cpp_out /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs -I /home/daniel/Desktop/repo/my_code/smore_control/smore_control/msgs -I /usr/include/gazebo-1.9/gazebo/msgs/proto /usr/include/gazebo-1.9/gazebo/msgs/proto/quaternion.proto
 
 msgs/quaternion.pb.h: msgs/quaternion.pb.cc
 
 msgs/header.pb.cc: /usr/include/gazebo-1.9/gazebo/msgs/proto/header.proto
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/CMakeFiles $(CMAKE_PROGRESS_13)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/CMakeFiles $(CMAKE_PROGRESS_13)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Running C++ protocol buffer compiler on /usr/include/gazebo-1.9/gazebo/msgs/proto/header.proto"
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs && /usr/bin/protoc --cpp_out /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs -I /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/msgs -I /usr/include/gazebo-1.9/gazebo/msgs/proto /usr/include/gazebo-1.9/gazebo/msgs/proto/header.proto
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs && /usr/bin/protoc --cpp_out /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs -I /home/daniel/Desktop/repo/my_code/smore_control/smore_control/msgs -I /usr/include/gazebo-1.9/gazebo/msgs/proto /usr/include/gazebo-1.9/gazebo/msgs/proto/header.proto
 
 msgs/header.pb.h: msgs/header.pb.cc
 
 msgs/time.pb.cc: /usr/include/gazebo-1.9/gazebo/msgs/proto/time.proto
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/CMakeFiles $(CMAKE_PROGRESS_14)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/CMakeFiles $(CMAKE_PROGRESS_14)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Running C++ protocol buffer compiler on /usr/include/gazebo-1.9/gazebo/msgs/proto/time.proto"
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs && /usr/bin/protoc --cpp_out /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs -I /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/msgs -I /usr/include/gazebo-1.9/gazebo/msgs/proto /usr/include/gazebo-1.9/gazebo/msgs/proto/time.proto
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs && /usr/bin/protoc --cpp_out /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs -I /home/daniel/Desktop/repo/my_code/smore_control/smore_control/msgs -I /usr/include/gazebo-1.9/gazebo/msgs/proto /usr/include/gazebo-1.9/gazebo/msgs/proto/time.proto
 
 msgs/time.pb.h: msgs/time.pb.cc
 
@@ -283,7 +283,7 @@ msgs/libcollision_message_plus.so: /usr/lib/libprotobuf.so
 msgs/libcollision_message_plus.so: msgs/CMakeFiles/collision_message_plus.dir/build.make
 msgs/libcollision_message_plus.so: msgs/CMakeFiles/collision_message_plus.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX shared library libcollision_message_plus.so"
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/collision_message_plus.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/collision_message_plus.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 msgs/CMakeFiles/collision_message_plus.dir/build: msgs/libcollision_message_plus.so
@@ -299,7 +299,7 @@ msgs/CMakeFiles/collision_message_plus.dir/requires: msgs/CMakeFiles/collision_m
 .PHONY : msgs/CMakeFiles/collision_message_plus.dir/requires
 
 msgs/CMakeFiles/collision_message_plus.dir/clean:
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs && $(CMAKE_COMMAND) -P CMakeFiles/collision_message_plus.dir/cmake_clean.cmake
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs && $(CMAKE_COMMAND) -P CMakeFiles/collision_message_plus.dir/cmake_clean.cmake
 .PHONY : msgs/CMakeFiles/collision_message_plus.dir/clean
 
 msgs/CMakeFiles/collision_message_plus.dir/depend: msgs/collision_message_plus.pb.cc
@@ -316,6 +316,6 @@ msgs/CMakeFiles/collision_message_plus.dir/depend: msgs/header.pb.cc
 msgs/CMakeFiles/collision_message_plus.dir/depend: msgs/header.pb.h
 msgs/CMakeFiles/collision_message_plus.dir/depend: msgs/time.pb.cc
 msgs/CMakeFiles/collision_message_plus.dir/depend: msgs/time.pb.h
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/msgs /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs/CMakeFiles/collision_message_plus.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/daniel/Desktop/repo/my_code/smore_control/smore_control /home/daniel/Desktop/repo/my_code/smore_control/smore_control/msgs /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs/CMakeFiles/collision_message_plus.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : msgs/CMakeFiles/collision_message_plus.dir/depend
 

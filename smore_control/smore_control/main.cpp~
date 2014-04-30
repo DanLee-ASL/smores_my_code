@@ -13,9 +13,12 @@
 
 // global variables
 boost::shared_ptr<google::protobuf::Message> g_echoMsg;
-bool foundNameIndex = false;
-int nameIndex = 0;
+bool foundNameIndices = false;
+int poseNameIndex = -1;
+int lidarPoseNameIndex = -1;
 GLViewer* glViewer;
+
+gazebo::math::Pose robotPose, lidarPose;
 
 char getch() {
   
@@ -40,29 +43,35 @@ char getch() {
 
 void poseCallback(ConstPosesStampedPtr &_msg) {
 //     std::cout << _msg->time().DebugString() << std::endl;
-    if(!foundNameIndex) {
+    if(!foundNameIndices) {
       for(int i = 0; i < _msg->pose_size(); i++) {
 	gazebo::msgs::Pose poseMsg = _msg->pose(i);
 	if(poseMsg.name().compare("SMORES6Uriah") == 0) {
-	  foundNameIndex = true;
-	  nameIndex = i;
+	  poseNameIndex = i;
+	}
+	if(poseMsg.name().compare("SMORES6Uriah::SMORES_LIDAR::model") == 0) {
+	  lidarPoseNameIndex = i;
 	}
       }
+      if(poseNameIndex != -1 && lidarPoseNameIndex != -1)
+	foundNameIndices = true;
     }
     else{
-//       printf("Pose: x:%f\ty:%f\tz:%f, | x:%f\ty:%f\tz:%f\tw:%f\n", _msg->pose(nameIndex).position().x(), _msg->pose(nameIndex).position().y(), _msg->pose(nameIndex).position().z(),
-// 	     _msg->pose(nameIndex).orientation().x(), _msg->pose(nameIndex).orientation().y(), _msg->pose(nameIndex).orientation().z(), _msg->pose(nameIndex).orientation().w());
-      printf("Got Pose @ %d:%d\n", _msg->time().sec(), _msg->time().nsec());
+      robotPose = gazebo::msgs::Convert(_msg->pose(poseNameIndex));
+      lidarPose = gazebo::msgs::Convert(_msg->pose(lidarPoseNameIndex));
+      
+      glViewer->SetLidarPose(lidarPose + robotPose);
+      
+//       std::cout << "Robot" << std::endl << (gazebo::msgs::Convert(robotPose).DebugString()) << std::endl;
+//       std::cout << "LIDAR" << std::endl << (gazebo::msgs::Convert(lidarPose).DebugString()) << std::endl;
+//       std::cout << "Robot + LIDAR" << std::endl << (gazebo::msgs::Convert(lidarPose + robotPose).DebugString()) << std::endl;
     }
 }
 
 void lidarCallback(ConstLaserScanStampedPtr &msg) {
-  
-  int numPoint = msg->scan().ranges_size();
-//   for(int i = 0; i < numPoint; i++) {
-//     std::cout << msg->scan().ranges(i) << "\t";
-//   }
-  printf("Got Lidar @ %d:%d\n", msg->time().sec(), msg->time().nsec());
+  msg->scan().ranges().data();
+  glViewer->SetLidarPoints((double*)(msg->scan().ranges().data()), msg->scan().ranges_size(), msg->scan().angle_min(), msg->scan().angle_max(), msg->scan().angle_step(),
+			   msg->scan().range_min, msg->scan().range_max());
   
 }
 
@@ -83,27 +92,25 @@ int main(int argc, char **argv) {
     // load Gazebo
     gazebo::load(argc, argv);
     gazebo::run();
-    
+
     // create our node for communication
     gazebo::transport::NodePtr node(new gazebo::transport::Node());
     node->Init("SMORES6Uriah");
-    
+
     boost::thread t(&GLViewerThread, argc, argv);
-    t.join();
-       
+      
     // publish to a Gazebo topic
     std::string robotName = "SMORES6Uriah";
     std::string pubName = "~/" + robotName + "_world";
     gazebo::transport::PublisherPtr pub = node->Advertise<command_message::msgs::CommandMessage>(pubName);
-    
+
     // subscribe to Pose topic
-     std::string poseName = "/gazebo/default/pose/info";
-     gazebo::transport::SubscriberPtr poseSub = node->Subscribe<gazebo::msgs::PosesStamped>(poseName, poseCallback);
+    std::string poseName = "/gazebo/default/pose/info";
+    gazebo::transport::SubscriberPtr poseSub = node->Subscribe<gazebo::msgs::PosesStamped>(poseName, poseCallback);
 
     // subscribe to LIDAR message
-     std::string lidarName = "/gazebo/default/SMORES6Uriah/SMORES_LIDAR/model/range_sensor/scan";
-     gazebo::transport::SubscriberPtr lidarSub = node->Subscribe<gazebo::msgs::LaserScanStamped>(lidarName, lidarCallback);
-    
+    std::string lidarName = "/gazebo/default/SMORES6Uriah/SMORES_LIDAR/model/LIDAR_sensor/scan";
+    gazebo::transport::SubscriberPtr lidarSub = node->Subscribe<gazebo::msgs::LaserScanStamped>(lidarName, lidarCallback);
         
     std::cout << "getting in to the loop..." << std::endl;
     command_message::msgs::CommandMessage msg;

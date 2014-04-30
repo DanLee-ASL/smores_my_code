@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control
+CMAKE_SOURCE_DIR = /home/daniel/Desktop/repo/my_code/smore_control/smore_control
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build
+CMAKE_BINARY_DIR = /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/smore_control.dir/depend.make
@@ -51,17 +51,17 @@ include CMakeFiles/smore_control.dir/flags.make
 
 CMakeFiles/smore_control.dir/main.cpp.o: CMakeFiles/smore_control.dir/flags.make
 CMakeFiles/smore_control.dir/main.cpp.o: ../main.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/smore_control.dir/main.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/smore_control.dir/main.cpp.o -c /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/main.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/smore_control.dir/main.cpp.o -c /home/daniel/Desktop/repo/my_code/smore_control/smore_control/main.cpp
 
 CMakeFiles/smore_control.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/smore_control.dir/main.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/main.cpp > CMakeFiles/smore_control.dir/main.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/daniel/Desktop/repo/my_code/smore_control/smore_control/main.cpp > CMakeFiles/smore_control.dir/main.cpp.i
 
 CMakeFiles/smore_control.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/smore_control.dir/main.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/main.cpp -o CMakeFiles/smore_control.dir/main.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/daniel/Desktop/repo/my_code/smore_control/smore_control/main.cpp -o CMakeFiles/smore_control.dir/main.cpp.s
 
 CMakeFiles/smore_control.dir/main.cpp.o.requires:
 .PHONY : CMakeFiles/smore_control.dir/main.cpp.o.requires
@@ -87,6 +87,12 @@ smore_control: /usr/lib/libboost_system-mt.so
 smore_control: /usr/lib/libboost_filesystem-mt.so
 smore_control: /usr/lib/libboost_regex-mt.so
 smore_control: /usr/lib/libboost_thread-mt.so
+smore_control: /usr/lib/libboost_system-mt.so
+smore_control: /usr/lib/libboost_filesystem-mt.so
+smore_control: /usr/lib/libboost_thread-mt.so
+smore_control: /usr/lib/libboost_date_time-mt.so
+smore_control: /usr/lib/libboost_iostreams-mt.so
+smore_control: /usr/lib/libboost_serialization-mt.so
 smore_control: /usr/lib/x86_64-linux-gnu/libGLU.so
 smore_control: /usr/lib/x86_64-linux-gnu/libGL.so
 smore_control: /usr/lib/x86_64-linux-gnu/libSM.so
@@ -111,6 +117,48 @@ smore_control: /usr/lib/x86_64-linux-gnu/libGLU.so
 smore_control: /usr/lib/libprotobuf.so
 smore_control: extern/glfw-3.0.4/src/libglfw3.a
 smore_control: libGLEW_1100.a
+smore_control: libPCL_OCTREE.a
+smore_control: /usr/lib/libpcl_common.so
+smore_control: /usr/lib/libpcl_octree.so
+smore_control: /usr/lib/libvtkCharts.so.5.8.0
+smore_control: /usr/lib/libvtkViews.so.5.8.0
+smore_control: /usr/lib/libvtkInfovis.so.5.8.0
+smore_control: /usr/lib/libvtkWidgets.so.5.8.0
+smore_control: /usr/lib/libvtkHybrid.so.5.8.0
+smore_control: /usr/lib/libvtkParallel.so.5.8.0
+smore_control: /usr/lib/libvtkVolumeRendering.so.5.8.0
+smore_control: /usr/lib/libvtkRendering.so.5.8.0
+smore_control: /usr/lib/libvtkGraphics.so.5.8.0
+smore_control: /usr/lib/libvtkImaging.so.5.8.0
+smore_control: /usr/lib/libvtkIO.so.5.8.0
+smore_control: /usr/lib/libvtkFiltering.so.5.8.0
+smore_control: /usr/lib/libvtkCommon.so.5.8.0
+smore_control: /usr/lib/libvtksys.so.5.8.0
+smore_control: /usr/lib/libOpenNI.so
+smore_control: /usr/lib/libpcl_io.so
+smore_control: /usr/lib/libflann_cpp_s.a
+smore_control: /usr/lib/libpcl_kdtree.so
+smore_control: /usr/lib/libpcl_search.so
+smore_control: /usr/lib/libpcl_sample_consensus.so
+smore_control: /usr/lib/libpcl_filters.so
+smore_control: /usr/lib/libOpenNI.so
+smore_control: /usr/lib/libpcl_io.so
+smore_control: /usr/lib/libflann_cpp_s.a
+smore_control: /usr/lib/libpcl_kdtree.so
+smore_control: /usr/lib/libpcl_search.so
+smore_control: /usr/lib/libpcl_sample_consensus.so
+smore_control: /usr/lib/libpcl_filters.so
+smore_control: /usr/lib/libboost_system-mt.so
+smore_control: /usr/lib/libboost_filesystem-mt.so
+smore_control: /usr/lib/libboost_regex-mt.so
+smore_control: /usr/lib/libboost_thread-mt.so
+smore_control: /usr/lib/libboost_system-mt.so
+smore_control: /usr/lib/libboost_filesystem-mt.so
+smore_control: /usr/lib/libboost_regex-mt.so
+smore_control: /usr/lib/libboost_thread-mt.so
+smore_control: /usr/lib/libboost_date_time-mt.so
+smore_control: /usr/lib/libboost_iostreams-mt.so
+smore_control: /usr/lib/libboost_serialization-mt.so
 smore_control: /usr/lib/x86_64-linux-gnu/libGLU.so
 smore_control: /usr/lib/x86_64-linux-gnu/libGL.so
 smore_control: /usr/lib/x86_64-linux-gnu/libSM.so
@@ -147,6 +195,6 @@ CMakeFiles/smore_control.dir/clean:
 .PHONY : CMakeFiles/smore_control.dir/clean
 
 CMakeFiles/smore_control.dir/depend:
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/CMakeFiles/smore_control.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/daniel/Desktop/repo/my_code/smore_control/smore_control /home/daniel/Desktop/repo/my_code/smore_control/smore_control /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/CMakeFiles/smore_control.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/smore_control.dir/depend
 

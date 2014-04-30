@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control
+CMAKE_SOURCE_DIR = /home/daniel/Desktop/repo/my_code/smore_control/smore_control
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build
+CMAKE_BINARY_DIR = /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -110,14 +110,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/CMakeFiles /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/msgs/CMakeFiles/progress.marks
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f CMakeFiles/Makefile2 msgs/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build/CMakeFiles 0
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/CMakeFiles /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/msgs/CMakeFiles/progress.marks
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f CMakeFiles/Makefile2 msgs/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f CMakeFiles/Makefile2 msgs/clean
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f CMakeFiles/Makefile2 msgs/clean
 .PHONY : clean
 
 # The main clean target
@@ -126,22 +126,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f CMakeFiles/Makefile2 msgs/preinstall
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f CMakeFiles/Makefile2 msgs/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f CMakeFiles/Makefile2 msgs/preinstall
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f CMakeFiles/Makefile2 msgs/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 msgs/CMakeFiles/collision_message_plus.dir/rule:
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f CMakeFiles/Makefile2 msgs/CMakeFiles/collision_message_plus.dir/rule
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f CMakeFiles/Makefile2 msgs/CMakeFiles/collision_message_plus.dir/rule
 .PHONY : msgs/CMakeFiles/collision_message_plus.dir/rule
 
 # Convenience name for target.
@@ -150,12 +150,12 @@ collision_message_plus: msgs/CMakeFiles/collision_message_plus.dir/rule
 
 # fast build rule for target.
 collision_message_plus/fast:
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/build
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/build
 .PHONY : collision_message_plus/fast
 
 # Convenience name for target.
 msgs/CMakeFiles/command_message.dir/rule:
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f CMakeFiles/Makefile2 msgs/CMakeFiles/command_message.dir/rule
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f CMakeFiles/Makefile2 msgs/CMakeFiles/command_message.dir/rule
 .PHONY : msgs/CMakeFiles/command_message.dir/rule
 
 # Convenience name for target.
@@ -164,7 +164,7 @@ command_message: msgs/CMakeFiles/command_message.dir/rule
 
 # fast build rule for target.
 command_message/fast:
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/build
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/build
 .PHONY : command_message/fast
 
 collision_message_plus.pb.o: collision_message_plus.pb.cc.o
@@ -172,8 +172,8 @@ collision_message_plus.pb.o: collision_message_plus.pb.cc.o
 
 # target to build an object file
 collision_message_plus.pb.cc.o:
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/collision_message_plus.pb.cc.o
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/collision_message_plus.pb.cc.o
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/collision_message_plus.pb.cc.o
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/collision_message_plus.pb.cc.o
 .PHONY : collision_message_plus.pb.cc.o
 
 collision_message_plus.pb.i: collision_message_plus.pb.cc.i
@@ -181,8 +181,8 @@ collision_message_plus.pb.i: collision_message_plus.pb.cc.i
 
 # target to preprocess a source file
 collision_message_plus.pb.cc.i:
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/collision_message_plus.pb.cc.i
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/collision_message_plus.pb.cc.i
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/collision_message_plus.pb.cc.i
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/collision_message_plus.pb.cc.i
 .PHONY : collision_message_plus.pb.cc.i
 
 collision_message_plus.pb.s: collision_message_plus.pb.cc.s
@@ -190,8 +190,8 @@ collision_message_plus.pb.s: collision_message_plus.pb.cc.s
 
 # target to generate assembly for a file
 collision_message_plus.pb.cc.s:
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/collision_message_plus.pb.cc.s
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/collision_message_plus.pb.cc.s
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/collision_message_plus.pb.cc.s
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/collision_message_plus.pb.cc.s
 .PHONY : collision_message_plus.pb.cc.s
 
 command_message.pb.o: command_message.pb.cc.o
@@ -199,8 +199,8 @@ command_message.pb.o: command_message.pb.cc.o
 
 # target to build an object file
 command_message.pb.cc.o:
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/command_message.pb.cc.o
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/command_message.pb.cc.o
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/command_message.pb.cc.o
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/command_message.pb.cc.o
 .PHONY : command_message.pb.cc.o
 
 command_message.pb.i: command_message.pb.cc.i
@@ -208,8 +208,8 @@ command_message.pb.i: command_message.pb.cc.i
 
 # target to preprocess a source file
 command_message.pb.cc.i:
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/command_message.pb.cc.i
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/command_message.pb.cc.i
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/command_message.pb.cc.i
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/command_message.pb.cc.i
 .PHONY : command_message.pb.cc.i
 
 command_message.pb.s: command_message.pb.cc.s
@@ -217,8 +217,8 @@ command_message.pb.s: command_message.pb.cc.s
 
 # target to generate assembly for a file
 command_message.pb.cc.s:
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/command_message.pb.cc.s
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/command_message.pb.cc.s
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/command_message.pb.cc.s
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/command_message.pb.cc.s
 .PHONY : command_message.pb.cc.s
 
 header.pb.o: header.pb.cc.o
@@ -226,8 +226,8 @@ header.pb.o: header.pb.cc.o
 
 # target to build an object file
 header.pb.cc.o:
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/header.pb.cc.o
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/header.pb.cc.o
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/header.pb.cc.o
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/header.pb.cc.o
 .PHONY : header.pb.cc.o
 
 header.pb.i: header.pb.cc.i
@@ -235,8 +235,8 @@ header.pb.i: header.pb.cc.i
 
 # target to preprocess a source file
 header.pb.cc.i:
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/header.pb.cc.i
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/header.pb.cc.i
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/header.pb.cc.i
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/header.pb.cc.i
 .PHONY : header.pb.cc.i
 
 header.pb.s: header.pb.cc.s
@@ -244,8 +244,8 @@ header.pb.s: header.pb.cc.s
 
 # target to generate assembly for a file
 header.pb.cc.s:
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/header.pb.cc.s
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/header.pb.cc.s
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/header.pb.cc.s
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/header.pb.cc.s
 .PHONY : header.pb.cc.s
 
 pose.pb.o: pose.pb.cc.o
@@ -253,8 +253,8 @@ pose.pb.o: pose.pb.cc.o
 
 # target to build an object file
 pose.pb.cc.o:
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/pose.pb.cc.o
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/pose.pb.cc.o
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/pose.pb.cc.o
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/pose.pb.cc.o
 .PHONY : pose.pb.cc.o
 
 pose.pb.i: pose.pb.cc.i
@@ -262,8 +262,8 @@ pose.pb.i: pose.pb.cc.i
 
 # target to preprocess a source file
 pose.pb.cc.i:
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/pose.pb.cc.i
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/pose.pb.cc.i
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/pose.pb.cc.i
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/pose.pb.cc.i
 .PHONY : pose.pb.cc.i
 
 pose.pb.s: pose.pb.cc.s
@@ -271,8 +271,8 @@ pose.pb.s: pose.pb.cc.s
 
 # target to generate assembly for a file
 pose.pb.cc.s:
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/pose.pb.cc.s
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/pose.pb.cc.s
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/pose.pb.cc.s
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/pose.pb.cc.s
 .PHONY : pose.pb.cc.s
 
 quaternion.pb.o: quaternion.pb.cc.o
@@ -280,8 +280,8 @@ quaternion.pb.o: quaternion.pb.cc.o
 
 # target to build an object file
 quaternion.pb.cc.o:
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/quaternion.pb.cc.o
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/quaternion.pb.cc.o
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/quaternion.pb.cc.o
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/quaternion.pb.cc.o
 .PHONY : quaternion.pb.cc.o
 
 quaternion.pb.i: quaternion.pb.cc.i
@@ -289,8 +289,8 @@ quaternion.pb.i: quaternion.pb.cc.i
 
 # target to preprocess a source file
 quaternion.pb.cc.i:
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/quaternion.pb.cc.i
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/quaternion.pb.cc.i
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/quaternion.pb.cc.i
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/quaternion.pb.cc.i
 .PHONY : quaternion.pb.cc.i
 
 quaternion.pb.s: quaternion.pb.cc.s
@@ -298,8 +298,8 @@ quaternion.pb.s: quaternion.pb.cc.s
 
 # target to generate assembly for a file
 quaternion.pb.cc.s:
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/quaternion.pb.cc.s
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/quaternion.pb.cc.s
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/quaternion.pb.cc.s
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/quaternion.pb.cc.s
 .PHONY : quaternion.pb.cc.s
 
 time.pb.o: time.pb.cc.o
@@ -307,8 +307,8 @@ time.pb.o: time.pb.cc.o
 
 # target to build an object file
 time.pb.cc.o:
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/time.pb.cc.o
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/time.pb.cc.o
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/time.pb.cc.o
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/time.pb.cc.o
 .PHONY : time.pb.cc.o
 
 time.pb.i: time.pb.cc.i
@@ -316,8 +316,8 @@ time.pb.i: time.pb.cc.i
 
 # target to preprocess a source file
 time.pb.cc.i:
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/time.pb.cc.i
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/time.pb.cc.i
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/time.pb.cc.i
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/time.pb.cc.i
 .PHONY : time.pb.cc.i
 
 time.pb.s: time.pb.cc.s
@@ -325,8 +325,8 @@ time.pb.s: time.pb.cc.s
 
 # target to generate assembly for a file
 time.pb.cc.s:
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/time.pb.cc.s
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/time.pb.cc.s
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/time.pb.cc.s
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/time.pb.cc.s
 .PHONY : time.pb.cc.s
 
 vector3d.pb.o: vector3d.pb.cc.o
@@ -334,8 +334,8 @@ vector3d.pb.o: vector3d.pb.cc.o
 
 # target to build an object file
 vector3d.pb.cc.o:
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/vector3d.pb.cc.o
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/vector3d.pb.cc.o
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/vector3d.pb.cc.o
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/vector3d.pb.cc.o
 .PHONY : vector3d.pb.cc.o
 
 vector3d.pb.i: vector3d.pb.cc.i
@@ -343,8 +343,8 @@ vector3d.pb.i: vector3d.pb.cc.i
 
 # target to preprocess a source file
 vector3d.pb.cc.i:
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/vector3d.pb.cc.i
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/vector3d.pb.cc.i
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/vector3d.pb.cc.i
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/vector3d.pb.cc.i
 .PHONY : vector3d.pb.cc.i
 
 vector3d.pb.s: vector3d.pb.cc.s
@@ -352,8 +352,8 @@ vector3d.pb.s: vector3d.pb.cc.s
 
 # target to generate assembly for a file
 vector3d.pb.cc.s:
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/vector3d.pb.cc.s
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/vector3d.pb.cc.s
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/collision_message_plus.dir/build.make msgs/CMakeFiles/collision_message_plus.dir/vector3d.pb.cc.s
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(MAKE) -f msgs/CMakeFiles/command_message.dir/build.make msgs/CMakeFiles/command_message.dir/vector3d.pb.cc.s
 .PHONY : vector3d.pb.cc.s
 
 # Help Target
@@ -402,6 +402,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/daniel/Desktop/modular_robots/my_code/smore_control/smore_control/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/daniel/Desktop/repo/my_code/smore_control/smore_control/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
