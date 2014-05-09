@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC -g   -shared -Wl,-soname,libsmores_linelaser.so -o libsmores_linelaser.so CMakeFiles/smores_linelaser.dir/LineLaser.cc.o -L/usr/lib/x86_64-linux-gnu/gazebo-3.0/plugins 
