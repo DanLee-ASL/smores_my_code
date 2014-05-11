@@ -1,7 +1,6 @@
 #include <gazebo/transport/transport.hh>
 #include <gazebo/msgs/msgs.hh>
 #include <gazebo/gazebo.hh>
-#include <math/gzmath.hh>
 #include <unistd.h>
 #include <termios.h>
 
