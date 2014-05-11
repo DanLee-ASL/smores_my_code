@@ -1,1 +1,0 @@
-/home/daniel/Desktop/repo/my_code/SMORES_LineLaser/build/CMakeFiles/smores_linelaser.dir
