@@ -57,20 +57,22 @@ namespace gazebo
     
     public: void Load(sensors::SensorPtr sensor, sdf::ElementPtr _sdf)
     {
-
       std::string sdfValue = "";
-      std::cout << _sdf->GetDescription() << std::endl;
-      
+//       std::cout << _sdf->GetDescription() << std::endl;
+          
       sdf::ElementPtr sdf(new sdf::Element);
-      sdf::initFile("sensor.sdf", sdf);
-      sdf::readString(raySensorString, sdf);
-      this->sdf = sdf;
+//       sdf::initFile("sensor.sdf", sdf);
+//       sdf::initFile("/home/daniel/.gazebo/models/SMORES_LIDAR/LIDAR.sdf", sdf);
+//       sdf::readString(raySensorString, sdf);
+//       sdf::ElementPtr rayElem = sdf->GetElement("ray");
+//       std::cout << rayElem->GetDescription() << std::endl;
+//       std::cout << sdf->GetDescription() << std::endl;
       
-      sdf->PrintDescription(sdfValue);
-      std::cout << sdfValue << std::endl;
+//       this->sdf = sdf;
+      
       
       this->sensor = sensor;
-//       this->sdf = _sdf;
+      this->sdf = _sdf;
       // Get then name of the parent model
       std::string sensorName = sensor->GetName();
       std::cout << "MODEL NAME: " << sensorName << std::endl;
@@ -127,7 +129,7 @@ namespace gazebo
 	
 	std::cout << "Sensor Created: " << createdSensorName << std::endl;
 // 	sensors::RaySensorPtr sensor = boost::dynamic_pointer_cast<sensors::RaySensor>(mgr->GetSensor(createdSensorName));
-	raySensor = boost::dynamic_pointer_cast<sensors::RaySensor>(mgr->GetSensor(createdSensorName));
+	raySensor = boost::dynamic_pointer_cast<sensors::RaySensor>(mgr->GetSensor("LIDAR_sensor"));
       }
     }
 

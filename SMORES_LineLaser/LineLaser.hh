@@ -44,9 +44,9 @@ namespace gazebo
     
   private:
     virtual void OnUpdate();
-    sensors::SensorPtr parentSensor;
+    sensors::RaySensorPtr parentSensor;
     event::ConnectionPtr updateConnection;
-      
+    transport::PublisherPtr lineLaserPub;
   };
   
 }
