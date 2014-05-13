@@ -55,7 +55,7 @@ void GLViewer::SetLidarPoints(double* range, int nPoints, double angleMin, doubl
 //       std::cout << i << std::endl;
       double r = rangeCopy[i];
       if(r >= maxRange || r <= minRange)
-	continue;
+		continue;
       double angle = angleMin + angleStepSize * i;
       double x = r * cos(angle);
       double y = r * sin(angle);
