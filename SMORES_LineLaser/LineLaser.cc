@@ -75,7 +75,6 @@ void LineLaser::Load(sensors::SensorPtr _sensor, sdf::ElementPtr _sdf)
 /// \brief so this is what happens when this sensor is running...?
 void LineLaser::OnUpdate()
 {
-	//   std::cout << "GOT " << this->parentSensor->GetRayCount() << " range readings" << std::endl;
 	std::vector<double> rangesReading;
 	common::Time timeReceived = this->parentSensor->GetLastUpdateTime();
 	this->parentSensor->GetRanges(rangesReading);
@@ -98,8 +97,8 @@ void LineLaser::OnUpdate()
 		gazebo::math::Pose globalLidarPtPose = lidarPtPose + sensorPose;
 		dynLinePtr->AddPoint(globalLidarPtPose.pos, common::Color::Red);
 	}
-	dynLinePtr->Update();
-	std::cout << "UPdated" << std::endl;
+// 	dynLinePtr->Update();
+// 	std::cout << "UPdated" << std::endl;
 	//   std::cout << "SIZE: " << msg.scan().ranges_size() << std::endl;
 	msg.mutable_time()->set_sec(timeReceived.sec);
 	msg.mutable_time()->set_nsec(timeReceived.nsec);
@@ -113,7 +112,7 @@ void LineLaser::OnUpdate()
 	msg.mutable_scan()->set_vertical_angle_min(this->parentSensor->GetVerticalAngleMin().Radian());
 	msg.mutable_scan()->set_vertical_angle_step(this->parentSensor->GetVerticalAngleResolution());
 	msg.mutable_scan()->set_vertical_count(this->parentSensor->GetVerticalRangeCount());
-	this->lineLaserPub->Publish(msg);
+// 	this->lineLaserPub->Publish(msg);
 	//   std::cout << "MSG Sent" << std::endl;
 }
 

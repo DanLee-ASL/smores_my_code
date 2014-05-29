@@ -5,6 +5,12 @@ include (FindPkgConfig)
 if (PKG_CONFIG_FOUND)
   pkg_check_modules(GAZEBO gazebo)
 endif()
+
+include_directories(
+	/usr/include/OGRE/
+	/usr/include/OGRE/Paging
+)
+
 include_directories(${GAZEBO_INCLUDE_DIRS})
 link_directories(${GAZEBO_LIBRARY_DIRS})
 

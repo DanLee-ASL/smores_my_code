@@ -1,6 +1,7 @@
 #include <gazebo/transport/transport.hh>
 #include <gazebo/msgs/msgs.hh>
 #include <gazebo/gazebo.hh>
+#include <gazebo/physics/World.hh>
 #include <unistd.h>
 #include <termios.h>
 
@@ -9,6 +10,8 @@
 
 #include <iostream>
 #include "GLViewer.h"
+#include "smorescontrollerwindow.h"
+#include <QtGui>
 
 // global variables
 boost::shared_ptr<google::protobuf::Message> g_echoMsg;
@@ -18,6 +21,10 @@ int lidarPoseNameIndex = -1;
 GLViewer* glViewer;
 
 gazebo::math::Pose robotPose, lidarPose;
+gazebo::transport::PublisherPtr pub;
+
+double leftWheel = 0, rightWheel = 0, joint1 = 0, joint2 = 0;
+bool doSwippingUD = false, doRotate = false;
 
 char getch() {
   
@@ -85,6 +92,59 @@ void GLViewerThread(int argc, char** argv) {
   }
 }
 
+void SwipeThread() {
+	
+	command_message::msgs::CommandMessage msg;
+	msg.add_jointgaittablestatus(true);
+	msg.add_jointgaittablestatus(true);
+	msg.add_jointgaittablestatus(true);
+	msg.add_jointgaittablestatus(true);
+	
+	msg.add_jointgaittable(0);
+	msg.add_jointgaittable(0);
+	msg.add_jointgaittable(0);
+	msg.add_jointgaittable(0);
+	
+	bool movingUp = false;
+	while(true)
+	{
+		if(doSwippingUD)
+		{
+			if(movingUp)
+			{
+				joint2 += 0.05;
+				if(joint2 > 1.5)
+					movingUp = false;
+			}
+			else
+			{
+				joint2 -= 0.05;
+				if(joint2 < 0.35)
+					movingUp = true;
+			}
+		}
+		if(doRotate)
+		{
+			joint1 += 0.01;
+		}
+		msg.set_messagetype(4);
+		msg.set_jointgaittable(0, joint1); 
+		msg.set_jointgaittable(1, leftWheel);
+		msg.set_jointgaittable(2, rightWheel);
+		msg.set_jointgaittable(3, joint2);
+		if(doSwippingUD || doRotate)
+			pub->Publish(msg);
+		boost::this_thread::sleep(boost::posix_time::millisec(100));
+	}
+}
+
+void SmoresControlGUI(int argc, char **argv)
+{
+    QApplication app(argc, argv);
+    SmoresControllerWindow window;
+    window.show();
+    app.exec();
+}
 
 int main(int argc, char **argv) {
     
@@ -92,16 +152,17 @@ int main(int argc, char **argv) {
     gazebo::load(argc, argv);
     gazebo::run();
 
+
+    gazebo::physics::WorldPtr worldPtr;
+
     // create our node for communication
     gazebo::transport::NodePtr node(new gazebo::transport::Node());
     node->Init("SMORES6Uriah");
 
-    boost::thread t(&GLViewerThread, argc, argv);
-      
-    // publish to a Gazebo topic
+	// publish to a Gazebo topic
     std::string robotName = "SMORES6Uriah";
     std::string pubName = "~/" + robotName + "_world";
-    gazebo::transport::PublisherPtr pub = node->Advertise<command_message::msgs::CommandMessage>(pubName);
+	pub = node->Advertise<command_message::msgs::CommandMessage>(pubName);
 
     // subscribe to Pose topic
     std::string poseName = "/gazebo/default/pose/info";
@@ -123,8 +184,11 @@ int main(int argc, char **argv) {
     msg.add_jointgaittable(0);
     msg.add_jointgaittable(0);
     
+	boost::thread t(&GLViewerThread, argc, argv);
+	boost::thread swipeThread(&SwipeThread);
+    boost::thread smoresControlGUIThread(&SmoresControlGUI, argc, argv);
+	
     char key_pressed;
-    double leftWheel = 0, rightWheel = 0, joint1 = 0, joint2 = 0;
     while(true)
     {
 //       std::cin >> key_pressed;
@@ -170,17 +234,21 @@ int main(int argc, char **argv) {
 	case 'u':
 	  joint2 -= 0.1;
 	  break;
-      }
-      msg.set_messagetype(4);
+	case 'q':
+		doSwippingUD = !doSwippingUD;
+	case 'w':
+		doRotate = !doRotate;
+	}
+//      msg.set_messagetype(4);
       
-      msg.set_jointgaittable(0, joint1); 
-      msg.set_jointgaittable(1, leftWheel);
-      msg.set_jointgaittable(2, rightWheel);
-      msg.set_jointgaittable(3, joint2);
+//      msg.set_jointgaittable(0, joint1);
+//      msg.set_jointgaittable(1, leftWheel);
+//      msg.set_jointgaittable(2, rightWheel);
+//      msg.set_jointgaittable(3, joint2);
 
       
-      pub->Publish(msg);
-      std::printf("J1: %f\tJ2: %f\tLW: %f\tRW:%f\n", joint1, joint2, leftWheel, rightWheel);
+		pub->Publish(msg);
+//      std::printf("J1: %f\tJ2: %f\tLW: %f\tRW:%f\n", joint1, joint2, leftWheel, rightWheel);
       gazebo::common::Time::MSleep(100);
     }
     

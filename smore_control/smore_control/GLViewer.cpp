@@ -32,9 +32,9 @@ void GLViewer::GetLidarPointsThread()
 {
   while(true) 
   {
-    pcl_octree_impl->DownSample(0.05f);
+//     pcl_octree_impl->DownSample(0.025f);
     points = pcl_octree_impl->GetPoints();
-    boost::this_thread::sleep(boost::posix_time::milliseconds(100));
+    boost::this_thread::sleep(boost::posix_time::milliseconds(200));
   }
 }
 
@@ -46,9 +46,13 @@ void GLViewer::SetLidarPose(gazebo::math::Pose p)
 
 void GLViewer::SetLidarPoints(double* range, int nPoints, double angleMin, double angleMax, double angleStepSize, double minRange, double maxRange){
     
+	if(nPoints <= 0)
+		return;
     pthread_mutex_lock(&lidar_mutex);
     double* rangeCopy = (double*)malloc(sizeof(double) * nPoints);
+	std::cout << "mem allocated" << std::endl;
     memcpy(rangeCopy, range, sizeof(double) * nPoints);
+	std::cout << "mem copied" << std::endl;
 
     for(int i = 0; i < nPoints; i++)
     {
@@ -63,7 +67,6 @@ void GLViewer::SetLidarPoints(double* range, int nPoints, double angleMin, doubl
       gazebo::math::Pose globalLidarPtPose = lidarPtPose + lidarPose;
       pcl_octree_impl->AddPoint(globalLidarPtPose.pos.x, globalLidarPtPose.pos.y, globalLidarPtPose.pos.z);
     }
-//     pcl_octree_impl->DownSample();
     delete rangeCopy;
     pthread_mutex_unlock(&lidar_mutex);
     this->numPoints = nPoints;

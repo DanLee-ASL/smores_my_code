@@ -1,3 +1,4 @@
+<?xml version ='1.0'?>
 <sdf version='1.5'>
   <world name='default'>
     <light name='sun' type='directional'>
@@ -1985,5 +1986,6 @@
         <view_controller>orbit</view_controller>
       </camera>
     </gui>
+    <plugin filename="plugins/libSuperServer.so" name="ControlCenter"/>
   </world>
 </sdf>

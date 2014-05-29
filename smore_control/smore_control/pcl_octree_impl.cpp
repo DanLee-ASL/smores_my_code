@@ -37,6 +37,10 @@ PCL_OCTREE_IMPL::PCL_OCTREE_IMPL(int width, int height)
   pCloud->width = width;
   pCloud->height = height;
   pCloud->points.resize(0);
+
+  octree = new pcl::octree::OctreePointCloud<pcl::PointXYZ>(0.25);
+  octree->setInputCloud(pCloud);
+  octree->addPointsFromInputCloud();
   
 //   octree = new pcl::octree::OctreePointCloudSearch<pcl::PointXYZ>(128.0f);
 //   octree->defineBoundingBox(0.1, 0.1, 0.1);
@@ -44,25 +48,27 @@ PCL_OCTREE_IMPL::PCL_OCTREE_IMPL(int width, int height)
 
 PCL_OCTREE_IMPL::~PCL_OCTREE_IMPL()
 {
-
+    delete octree;
 }
 
 void PCL_OCTREE_IMPL::AddPoint(double x, double y, double z)
 {
-  pcl::PointXYZ searchPt = pcl::PointXYZ(x, y, z);
-  
-  std::vector<int> pointIdxRadiusSearch;
-  std::vector<float> pointRadiusSearchDistance;
-  
-//   octree->setInputCloud(pCloud);
-//   octree->addPointsFromInputCloud();
-//   int search = octree->radiusSearch(searchPt, 0.1, pointIdxRadiusSearch, pointRadiusSearchDistance);
-//   if(search > 0){
-//   }
-//   else{
-    pCloud->points.push_back(pcl::PointXYZ(x, y, z));
-//   }
-//   std::cout << pCloud->points.size() << "\t";
+    pcl::PointXYZ searchPt = pcl::PointXYZ(x, y, z);
+
+    std::vector<int> pointIdxRadiusSearch;
+    std::vector<float> pointRadiusSearchDistance;
+
+    octree->addPointToCloud(searchPt, pCloud);
+
+//    int search = octree->radiusSearch(searchPt, 0.1, pointIdxRadiusSearch, pointRadiusSearchDistance);
+//    if(search > 0)
+//    {
+//    }
+//    else
+//    {
+//        pCloud->points.push_back(pcl::PointXYZ(x, y, z));
+//    }
+    std::cout << pCloud->points.size() << "\t";
 }
 
 void PCL_OCTREE_IMPL::DownSample(float voxelResolution)

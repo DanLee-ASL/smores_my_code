@@ -15,12 +15,32 @@ find_package(Protobuf REQUIRED)
 find_package(Threads)
 find_package(OpenGL)
 find_package(GLUT)
+find_package(Qt4 REQUIRED)
+# find_package(OGRE REQUIRED)
 
-add_subdirectory(extern/glfw-3.0.4)
+#--------- QT GUI STUFF
+set(smores_gui_SOURCES smorescontrollerwindow.cpp)
+set(smores_gui_HEADERS smorescontrollerwindow.h)
+set(smores_gui_FORMS smorescontrollerwindow.ui)
+QT4_WRAP_CPP(smores_gui_HEADERS_MOC ${smores_gui_HEADERS})
+QT4_WRAP_UI(smores_gui_FORMS_HEADERS ${smores_gui_FORMS})
+include(${QT_USE_FILE})
+add_library(smores_gui ${smores_gui_SOURCES}
+    ${smores_gui_HEADERS_MOC}
+    ${smores_gui_FORMS_HEADERS})
+target_link_libraries(smores_gui ${QT_LIBRARIES})
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
+#--------- END OF QT GUI STUFF
+
+
+add_subdirectory(
+  extern/glfw-3.0.4
+)
 
 include_directories(
   extern/glfw-3.0.4/include/
   extern/glew-1.10.0/include/
+  include/octomap/
 )
 
 # GLEW Portions
@@ -43,13 +63,17 @@ add_library(GLEW_1100 STATIC
 target_link_libraries(GLEW_1100 ${OPENGL_LIBRARY})
 # #END of GLEW
  
+#------- OCTOMAP Portion
+
+#------- END OCTOMAP
+
  
-#  PCL Portions
-find_package(PCL 1.3 REQUIRED COMPONENTS common io filters)
+#------- PCL Portions
+find_package(PCL 1.3 REQUIRED)
 include_directories(${PCL_INCLUDE_DIRS})
 link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
-# PCL PORTIONS END
+#------- PCL PORTIONS END
 
 set(GLLib ${OPENGL_LIBRARY} ${GLUT_Xi_LIBRARY} ${GLUT_Xmu_LIBRARY} ${GLFW_LIBRARIES} ${OPENGL_glu_LIBRARY} ${GLEW_1100} ${glfw_LIBRARIES}) 
 
@@ -71,7 +95,13 @@ link_directories(${GAZEBO_LIBRARY_DIRS} ${CMAKE_CURRENT_BINARY_DIR}/msgs)
 add_subdirectory(msgs)
 
 add_executable(smore_control main.cpp)
-target_link_libraries(smore_control command_message collision_message_plus GLViewer ${Boost_LIBRARIES} ${GLLib} ${GAZEBO_LIBRARIES} ${PROTOBUF_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(smore_control command_message collision_message_plus GLViewer smores_gui
+        ${Boost_LIBRARIES}
+        ${GLLib}
+        ${GAZEBO_LIBRARIES}
+        ${PROTOBUF_LIBRARIES}
+        ${CMAKE_THREAD_LIBS_INIT}
+        ${QT_LIBRARIES})
 add_dependencies(smore_control command_message collision_message_plus)
 
 add_executable(zprdemo zprdemo.c zpr.c)
