@@ -16,6 +16,7 @@ typedef struct {
   
 public:
   GLViewer();
+  ~GLViewer();
   void Run(int argc, char** argv);
   void SetLidarPoints(double* range, int nPoints, double angleMin, double angleMax, double angleStepSize, double minRange, double maxRange);
   void SetLidarPose(gazebo::math::Pose p);

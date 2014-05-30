@@ -28,12 +28,16 @@ GLViewer::GLViewer()
   boost::thread timerThread(&GLViewer::GetLidarPointsThread);
 }
 
+GLViewer::~GLViewer()
+{
+	pcl_octree_impl->~PCL_OCTREE_IMPL();
+}
 void GLViewer::GetLidarPointsThread()
 {
   while(true) 
   {
 //     pcl_octree_impl->DownSample(0.025f);
-    points = pcl_octree_impl->GetPoints();
+//     points = pcl_octree_impl->GetPoints();
     boost::this_thread::sleep(boost::posix_time::milliseconds(200));
   }
 }
@@ -50,9 +54,9 @@ void GLViewer::SetLidarPoints(double* range, int nPoints, double angleMin, doubl
 		return;
     pthread_mutex_lock(&lidar_mutex);
     double* rangeCopy = (double*)malloc(sizeof(double) * nPoints);
-	std::cout << "mem allocated" << std::endl;
+// 	std::cout << "mem allocated" << std::endl;
     memcpy(rangeCopy, range, sizeof(double) * nPoints);
-	std::cout << "mem copied" << std::endl;
+// 	std::cout << "mem copied" << std::endl;
 
     for(int i = 0; i < nPoints; i++)
     {

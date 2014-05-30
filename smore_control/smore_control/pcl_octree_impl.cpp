@@ -33,43 +33,68 @@ static pthread_mutex_t returnPointMutex;
 
 PCL_OCTREE_IMPL::PCL_OCTREE_IMPL(int width, int height)
 {
-  pCloud = pcl::PointCloud<pcl::PointXYZ>::Ptr(new pcl::PointCloud<pcl::PointXYZ>);
-  pCloud->width = width;
-  pCloud->height = height;
-  pCloud->points.resize(0);
-
-  octree = new pcl::octree::OctreePointCloud<pcl::PointXYZ>(0.25);
-  octree->setInputCloud(pCloud);
-  octree->addPointsFromInputCloud();
+//   pCloud = pcl::PointCloud<pcl::PointXYZ>::Ptr(new pcl::PointCloud<pcl::PointXYZ>);
+//   pCloud->width = width;
+//   pCloud->height = height;
+//   pCloud->points.resize(0);
+// 
+//   octree = new pcl::octree::OctreePointCloud<pcl::PointXYZ>(0.25);
+//   octree->setInputCloud(pCloud);
+//   octree->addPointsFromInputCloud();
+  
+  
   
 //   octree = new pcl::octree::OctreePointCloudSearch<pcl::PointXYZ>(128.0f);
 //   octree->defineBoundingBox(0.1, 0.1, 0.1);
+
+	octoMapTree = new octomap::OcTree(0.025);
 }
 
 PCL_OCTREE_IMPL::~PCL_OCTREE_IMPL()
 {
-    delete octree;
+//     delete octree;
+	std::cout << "Writing to tree.bt" << std::endl;
+	octoMapTree->writeBinary("tree.bt");
+	std::cout << "Done writing." << std::endl;
+	delete octoMapTree;
+}
+
+void print_query_info(octomap::point3d query, octomap::OcTreeNode* node) {
+  if (node != NULL) {
+    std::cout << "occupancy probability at " << query << ":\t " << node->getOccupancy() << std::endl;
+  }
+  else 
+    std::cout << "occupancy probability at " << query << ":\t is unknown" << std::endl;    
 }
 
 void PCL_OCTREE_IMPL::AddPoint(double x, double y, double z)
 {
-    pcl::PointXYZ searchPt = pcl::PointXYZ(x, y, z);
+//     pcl::PointXYZ searchPt = pcl::PointXYZ(x, y, z);
 
-    std::vector<int> pointIdxRadiusSearch;
-    std::vector<float> pointRadiusSearchDistance;
+// 	octree->deleteTree();
+// 	octree->setInputCloud(pCloud);
+// 	octree->addPointsFromInputCloud();
+//     octree->addPointToCloud(searchPt, pCloud);
 
-    octree->addPointToCloud(searchPt, pCloud);
+//     std::cout << pCloud->points.size() << "\t";
 
-//    int search = octree->radiusSearch(searchPt, 0.1, pointIdxRadiusSearch, pointRadiusSearchDistance);
-//    if(search > 0)
-//    {
-//    }
-//    else
-//    {
-//        pCloud->points.push_back(pcl::PointXYZ(x, y, z));
-//    }
-    std::cout << pCloud->points.size() << "\t";
+	octomap::point3d pt(x, y, z);
+	octoMapTree->updateNode(pt, true);
+// 	std::cout << octoMapTree->size() << std::endl;
+// 	
+// 	octomap::point3d query (0., 0., 0.);
+// 	octomap::OcTreeNode* result = octoMapTree->search (query);
+// 	print_query_info(query, result);
+// 
+// 	query = octomap::point3d(-1.,-1.,-1.);
+// 	result = octoMapTree->search (query);
+// 	print_query_info(query, result);
+// 
+// 	query = octomap::point3d(1.,1.,1.);
+// 	result = octoMapTree->search (query);
+// 	print_query_info(query, result);
 }
+
 
 void PCL_OCTREE_IMPL::DownSample(float voxelResolution)
 {
@@ -77,7 +102,9 @@ void PCL_OCTREE_IMPL::DownSample(float voxelResolution)
   sor.setInputCloud(pCloud);
   sor.setLeafSize(voxelResolution, voxelResolution, voxelResolution);
   sor.filter(*pCloudFiltered);
+  std::cout << pCloud->points.size() << "\t";
   pCloud = pCloudFiltered;
+  
 }
 
 

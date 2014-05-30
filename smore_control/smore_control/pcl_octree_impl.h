@@ -32,6 +32,7 @@
 #include <pcl/common/common.h>
 #include <pcl/octree/octree.h>
 #include <pcl/filters/voxel_grid.h>
+#include <octomap/octomap.h>
 
 class PCL_OCTREE_IMPL
 {
@@ -47,6 +48,8 @@ private:
   pcl::PointCloud<pcl::PointXYZ>::Ptr pCloud;
   pcl::VoxelGrid<pcl::PointXYZ> sor;
   pcl::octree::OctreePointCloud<pcl::PointXYZ> *octree;
+  
+	octomap::OcTree *octoMapTree;
 };
 
 #endif // PCL_OCTREE_IMPL_H

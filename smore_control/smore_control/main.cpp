@@ -189,69 +189,89 @@ int main(int argc, char **argv) {
     boost::thread smoresControlGUIThread(&SmoresControlGUI, argc, argv);
 	
     char key_pressed;
-    while(true)
+	bool isRunning = true;
+    while(isRunning)
     {
 //       std::cin >> key_pressed;
       key_pressed = getch();
+	  bool changed = false;
       switch(key_pressed)
       {
-	case 'i':
-	  leftWheel += 0.1;
-	  rightWheel += 0.1;
-	  break;
-	  
-	case 'k':
-	  leftWheel -= 0.1;
-	  rightWheel -= 0.1;
-	  break;
-	  
-	case 'j':
-	  leftWheel -= 0.1;
-	  rightWheel += 0.1;
-	  break;
-	  
-	case 'l':
-	  leftWheel += 0.1;
-	  rightWheel -= 0.1;
-	  break;
-	  
-	case 's':
-	  leftWheel = 0.0;
-	  rightWheel = 0.0;
-	  break;
-	  
-	case 'r':
-	  joint1 += 0.1;
-	  break;
-	  
-	case 't':
-	  joint1 -= 0.1;
-	  break;
-	  
-	case 'y':
-	  joint2 += 0.1;
-	  break;
-	case 'u':
-	  joint2 -= 0.1;
-	  break;
-	case 'q':
-		doSwippingUD = !doSwippingUD;
-	case 'w':
-		doRotate = !doRotate;
+		case 'i':
+			leftWheel += 0.1;
+			rightWheel += 0.1;
+			changed = true;
+			break;
+		
+		case 'k':
+			leftWheel -= 0.1;
+			rightWheel -= 0.1;
+			changed = true;
+			break;
+		
+		case 'j':
+			leftWheel -= 0.1;
+			rightWheel += 0.1;
+			changed = true;
+			break;
+		
+		case 'l':
+			leftWheel += 0.1;
+			rightWheel -= 0.1;
+			changed = true;
+			break;
+		
+		case 's':
+			leftWheel = 0.0;
+			rightWheel = 0.0;
+			changed = true;
+			break;
+		
+		case 'r':
+			joint1 += 0.1;
+			changed = true;
+			break;
+		
+		case 't':
+			joint1 -= 0.1;
+			changed = true;
+			break;
+		
+		case 'y':
+			joint2 += 0.1;
+			changed = true;
+			break;
+		case 'u':
+			joint2 -= 0.1;
+			changed = true;
+			break;
+		case 'q':
+			doSwippingUD = !doSwippingUD;
+			changed = true;
+			break;
+		case 'w':
+			doRotate = !doRotate;
+			changed = true;
+			break;
+		case 'z':
+			isRunning = false;
+			break;
 	}
-//      msg.set_messagetype(4);
-      
-//      msg.set_jointgaittable(0, joint1);
-//      msg.set_jointgaittable(1, leftWheel);
-//      msg.set_jointgaittable(2, rightWheel);
-//      msg.set_jointgaittable(3, joint2);
-
-      
-		pub->Publish(msg);
-//      std::printf("J1: %f\tJ2: %f\tLW: %f\tRW:%f\n", joint1, joint2, leftWheel, rightWheel);
-      gazebo::common::Time::MSleep(100);
+		if(changed)
+		{
+			msg.set_messagetype(4);
+		
+			msg.set_jointgaittable(0, joint1);
+			msg.set_jointgaittable(1, leftWheel);
+			msg.set_jointgaittable(2, rightWheel);
+			msg.set_jointgaittable(3, joint2);
+	
+			pub->Publish(msg);
+			std::printf("J1: %f\tJ2: %f\tLW: %f\tRW:%f\n", joint1, joint2, leftWheel, rightWheel);
+		}
+		gazebo::common::Time::MSleep(100);
     }
-    
+    glViewer->~GLViewer();
     gazebo::transport::fini();
     
 }

@@ -40,7 +40,6 @@ add_subdirectory(
 include_directories(
   extern/glfw-3.0.4/include/
   extern/glew-1.10.0/include/
-  include/octomap/
 )
 
 # GLEW Portions
@@ -64,7 +63,13 @@ target_link_libraries(GLEW_1100 ${OPENGL_LIBRARY})
 # #END of GLEW
  
 #------- OCTOMAP Portion
-
+include_directories(
+	include/
+)
+set(OCTOMAP_LIBRARIES
+	${CMAKE_SOURCE_DIR}/lib/liboctomap.a
+	${CMAKE_SOURCE_DIR}/lib/liboctomath.a
+)
 #------- END OCTOMAP
 
  
@@ -78,7 +83,7 @@ add_definitions(${PCL_DEFINITIONS})
 set(GLLib ${OPENGL_LIBRARY} ${GLUT_Xi_LIBRARY} ${GLUT_Xmu_LIBRARY} ${GLFW_LIBRARIES} ${OPENGL_glu_LIBRARY} ${GLEW_1100} ${glfw_LIBRARIES}) 
 
 add_library(PCL_OCTREE pcl_octree_impl.cpp)
-target_link_libraries(PCL_OCTREE ${PCL_LIBRARIES})
+target_link_libraries(PCL_OCTREE ${PCL_LIBRARIES} ${OCTOMAP_LIBRARIES})
 
 add_library(GLViewer GLViewer.cpp zpr.c)
 target_link_libraries(GLViewer glfw GLEW_1100 glut PCL_OCTREE)
