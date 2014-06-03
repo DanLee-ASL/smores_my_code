@@ -57,7 +57,7 @@ void GLViewer::SetLidarPoints(double* range, int nPoints, double angleMin, doubl
 // 	std::cout << "mem allocated" << std::endl;
     memcpy(rangeCopy, range, sizeof(double) * nPoints);
 // 	std::cout << "mem copied" << std::endl;
-
+	std::vector<double> xPts, yPts, zPts;
     for(int i = 0; i < nPoints; i++)
     {
 //       std::cout << i << std::endl;
@@ -69,8 +69,14 @@ void GLViewer::SetLidarPoints(double* range, int nPoints, double angleMin, doubl
       double y = r * sin(angle);
       gazebo::math::Pose lidarPtPose(x, y, 0, 0, 0, 0);
       gazebo::math::Pose globalLidarPtPose = lidarPtPose + lidarPose;
-      pcl_octree_impl->AddPoint(globalLidarPtPose.pos.x, globalLidarPtPose.pos.y, globalLidarPtPose.pos.z);
+//       pcl_octree_impl->AddPoint(globalLidarPtPose.pos.x, globalLidarPtPose.pos.y, globalLidarPtPose.pos.z);
+// 	  std::cout << globalLidarPtPose.pos.x << "\t" << globalLidarPtPose.pos.y << "\t" << globalLidarPtPose.pos.z << std::endl;
+	  xPts.push_back(globalLidarPtPose.pos.x);
+	  yPts.push_back(globalLidarPtPose.pos.y);
+	  zPts.push_back(globalLidarPtPose.pos.z);
+// 	  std::cout << xPts[i] << "\t" << yPts[y] << "\t" << zPts[i] << std::endl;
     }
+    pcl_octree_impl->AddScan(&xPts[0], &yPts[0], &zPts[0], nPoints, lidarPose.pos.x, lidarPose.pos.y, lidarPose.pos.z);
     delete rangeCopy;
     pthread_mutex_unlock(&lidar_mutex);
     this->numPoints = nPoints;

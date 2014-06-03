@@ -95,6 +95,18 @@ void PCL_OCTREE_IMPL::AddPoint(double x, double y, double z)
 // 	print_query_info(query, result);
 }
 
+void PCL_OCTREE_IMPL::AddScan(double* xPts, double* yPts, double* zPts, int nPoints, double poseX, double poseY, double poseZ)
+{
+	octomap::Pointcloud scan;
+	for(int i = 0; i < nPoints; i++)
+	{
+// 		std::cout << xPts[i] << "\t" << yPts[i] << "\t" << zPts[i] << std::endl;
+		scan.push_back(xPts[i], yPts[i], zPts[i]);
+	}
+	octoMapTree->insertScan(scan, octomap::point3d(poseX, poseY, poseZ), 10);
+// 	std::cout << "Size: " << octoMapTree->size() << std::endl;
+}
+
 
 void PCL_OCTREE_IMPL::DownSample(float voxelResolution)
 {
@@ -119,5 +131,9 @@ std::vector< pcl::PointXYZ > PCL_OCTREE_IMPL::GetPoints()
   }
   pthread_mutex_unlock(&returnPointMutex);
   return pts;
-  
+}
+
+std::vector<octomap::point3d> PCL_OCTREE_IMPL::GetVoxels()
+{
+	
 }

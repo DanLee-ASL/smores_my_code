@@ -41,8 +41,10 @@ public:
   PCL_OCTREE_IMPL(int width, int height);
   virtual ~PCL_OCTREE_IMPL();
   void AddPoint(double x, double y, double z);
+  void AddScan(double* xPts, double* yPts, double* zPts, int nPoints, double poseX, double poseY, double poseZ);
   void DownSample(float voxelResolution);
   std::vector<pcl::PointXYZ> GetPoints();
+  std::vector<octomap::point3d> GetVoxels();
 
 private:
   pcl::PointCloud<pcl::PointXYZ>::Ptr pCloud;
