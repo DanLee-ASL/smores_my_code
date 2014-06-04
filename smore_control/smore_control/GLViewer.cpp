@@ -10,36 +10,38 @@
 #include <pthread.h>
 #include <boost/thread.hpp>
 #include <boost/date_time.hpp>
+#include <boost/bind.hpp>
 
 // this is fking stupid. C++ require actual definition for static members.
 int GLViewer::numPoints;
 gazebo::math::Pose GLViewer::lidarPose;
 PCL_OCTREE_IMPL *GLViewer::pcl_octree_impl;
 std::vector<pcl::PointXYZ> GLViewer::points;
+std::vector<octomap::point3d> GLViewer::voxelVector;
+float GLViewer::cubeSize;
 
 static pthread_mutex_t lidar_mutex;
-
+static pthread_mutex_t cubePlotMutex;
 
 GLViewer::GLViewer()
 {
   pcl_octree_impl = new PCL_OCTREE_IMPL(500000, 1);
   points.clear();
-  
-  boost::thread timerThread(&GLViewer::GetLidarPointsThread);
+  lidarUpdateCounter = 0;
 }
 
 GLViewer::~GLViewer()
 {
 	pcl_octree_impl->~PCL_OCTREE_IMPL();
 }
-void GLViewer::GetLidarPointsThread()
+
+void GLViewer::GetOccupiedVoxels()
 {
-  while(true) 
-  {
-//     pcl_octree_impl->DownSample(0.025f);
-//     points = pcl_octree_impl->GetPoints();
-    boost::this_thread::sleep(boost::posix_time::milliseconds(200));
-  }
+	if(++lidarUpdateCounter >= 100)
+	{
+		voxelVector = pcl_octree_impl->GetVoxels(16, cubeSize);
+		lidarUpdateCounter = 0;
+	}
 }
 
 // This function set the GLOBAL pose of the lidar scan
@@ -54,27 +56,23 @@ void GLViewer::SetLidarPoints(double* range, int nPoints, double angleMin, doubl
 		return;
     pthread_mutex_lock(&lidar_mutex);
     double* rangeCopy = (double*)malloc(sizeof(double) * nPoints);
-// 	std::cout << "mem allocated" << std::endl;
     memcpy(rangeCopy, range, sizeof(double) * nPoints);
-// 	std::cout << "mem copied" << std::endl;
+	
 	std::vector<double> xPts, yPts, zPts;
-    for(int i = 0; i < nPoints; i++)
+	for(int i = 0; i < nPoints; i++)
     {
-//       std::cout << i << std::endl;
-      double r = rangeCopy[i];
-      if(r >= maxRange || r <= minRange)
-		continue;
-      double angle = angleMin + angleStepSize * i;
-      double x = r * cos(angle);
-      double y = r * sin(angle);
-      gazebo::math::Pose lidarPtPose(x, y, 0, 0, 0, 0);
-      gazebo::math::Pose globalLidarPtPose = lidarPtPose + lidarPose;
-//       pcl_octree_impl->AddPoint(globalLidarPtPose.pos.x, globalLidarPtPose.pos.y, globalLidarPtPose.pos.z);
-// 	  std::cout << globalLidarPtPose.pos.x << "\t" << globalLidarPtPose.pos.y << "\t" << globalLidarPtPose.pos.z << std::endl;
-	  xPts.push_back(globalLidarPtPose.pos.x);
-	  yPts.push_back(globalLidarPtPose.pos.y);
-	  zPts.push_back(globalLidarPtPose.pos.z);
-// 	  std::cout << xPts[i] << "\t" << yPts[y] << "\t" << zPts[i] << std::endl;
+		double r = rangeCopy[i];
+		if(r >= maxRange || r <= minRange)
+			continue;
+		double angle = angleMin + angleStepSize * i;
+		double x = r * cos(angle);
+		double y = r * sin(angle);
+		gazebo::math::Pose lidarPtPose(x, y, 0, 0, 0, 0);
+		gazebo::math::Pose globalLidarPtPose = lidarPtPose + lidarPose;
+
+		xPts.push_back(globalLidarPtPose.pos.x);
+		yPts.push_back(globalLidarPtPose.pos.y);
+		zPts.push_back(globalLidarPtPose.pos.z);
     }
     pcl_octree_impl->AddScan(&xPts[0], &yPts[0], &zPts[0], nPoints, lidarPose.pos.x, lidarPose.pos.y, lidarPose.pos.z);
     delete rangeCopy;
@@ -82,26 +80,83 @@ void GLViewer::SetLidarPoints(double* range, int nPoints, double angleMin, doubl
     this->numPoints = nPoints;
 }
 
-void GLViewer::Draw() {
+void GLViewer::Draw() 
+{
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);		     // Clear Screen and Depth Buffer
+	VoxelDraw(cubeSize);
+}
 
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);		     // Clear Screen and Depth Buffer
 
-  glBegin(GL_POINTS);
-  glColor4f(0.95f, 0.207, 0.031f, 1.0f);
-  for(int i = 0; i < points.size(); i++)
-  {
-    double x = points[i].x;
-    double y = points[i].y;
-    double z = points[i].z;
-    glVertex3d(x, y, z);
-  }
-  glEnd();
-  glFinish();
+void GLViewer::VoxelDraw(float cubeSize) 
+{
+	pthread_mutex_lock(&cubePlotMutex);
+	glBegin(GL_POINTS);
+	for(int i = 0; i < voxelVector.size(); i++)
+	{
+		octomap::point3d pt = voxelVector[i];
+		// top surface
+		glBegin(GL_POLYGON);
+		glColor4f(0, 102 / 255.0f, 204 / 255.0f, 0.5f);
+		glVertex3f(pt.x() - (cubeSize / 2.0f), pt.y() + (cubeSize / 2.0f), pt.z() + cubeSize / 2.0f);
+		glVertex3f(pt.x() - (cubeSize / 2.0f), pt.y() - (cubeSize / 2.0f), pt.z() + cubeSize / 2.0f);
+		glVertex3f(pt.x() + (cubeSize / 2.0f), pt.y() - (cubeSize / 2.0f), pt.z() + cubeSize / 2.0f);
+		glVertex3f(pt.x() + (cubeSize / 2.0f), pt.y() + (cubeSize / 2.0f), pt.z() + cubeSize / 2.0f);
+		glEnd();
+		
+		// bottom surface
+		glBegin(GL_POLYGON);
+		glColor4f(0, 102 / 255.0f, 204 / 255.0f, 0.5f);
+		glVertex3f(pt.x() - (cubeSize / 2.0f), pt.y() + (cubeSize / 2.0f), pt.z() - cubeSize / 2.0f);
+		glVertex3f(pt.x() - (cubeSize / 2.0f), pt.y() - (cubeSize / 2.0f), pt.z() - cubeSize / 2.0f);
+		glVertex3f(pt.x() + (cubeSize / 2.0f), pt.y() - (cubeSize / 2.0f), pt.z() - cubeSize / 2.0f);
+		glVertex3f(pt.x() + (cubeSize / 2.0f), pt.y() + (cubeSize / 2.0f), pt.z() - cubeSize / 2.0f);
+		glEnd();
+		
+		// front surface
+		glBegin(GL_POLYGON);
+		glColor4f(0, 102 / 255.0f, 204 / 255.0f, 0.5f);
+		glVertex3f(pt.x() - (cubeSize / 2.0f), pt.y() - (cubeSize / 2.0f), pt.z() + cubeSize / 2.0f);
+		glVertex3f(pt.x() - (cubeSize / 2.0f), pt.y() - (cubeSize / 2.0f), pt.z() - cubeSize / 2.0f);
+		glVertex3f(pt.x() + (cubeSize / 2.0f), pt.y() - (cubeSize / 2.0f), pt.z() - cubeSize / 2.0f);
+		glVertex3f(pt.x() + (cubeSize / 2.0f), pt.y() - (cubeSize / 2.0f), pt.z() + cubeSize / 2.0f);
+		glEnd();
+		
+		// back surface
+		glBegin(GL_POLYGON);
+		glColor4f(0, 102 / 255.0f, 204 / 255.0f, 0.5f);
+		glVertex3f(pt.x() - (cubeSize / 2.0f), pt.y() + (cubeSize / 2.0f), pt.z() + cubeSize / 2.0f);
+		glVertex3f(pt.x() - (cubeSize / 2.0f), pt.y() + (cubeSize / 2.0f), pt.z() - cubeSize / 2.0f);
+		glVertex3f(pt.x() + (cubeSize / 2.0f), pt.y() + (cubeSize / 2.0f), pt.z() - cubeSize / 2.0f);
+		glVertex3f(pt.x() + (cubeSize / 2.0f), pt.y() + (cubeSize / 2.0f), pt.z() + cubeSize / 2.0f);
+		glEnd();
+		
+		// right surface
+		glBegin(GL_POLYGON);
+		glColor4f(0, 102 / 255.0f, 204 / 255.0f, 0.5f);
+		glVertex3f(pt.x() + (cubeSize / 2.0f), pt.y() - (cubeSize / 2.0f), pt.z() + cubeSize / 2.0f);
+		glVertex3f(pt.x() + (cubeSize / 2.0f), pt.y() - (cubeSize / 2.0f), pt.z() - cubeSize / 2.0f);
+		glVertex3f(pt.x() + (cubeSize / 2.0f), pt.y() + (cubeSize / 2.0f), pt.z() - cubeSize / 2.0f);
+		glVertex3f(pt.x() + (cubeSize / 2.0f), pt.y() + (cubeSize / 2.0f), pt.z() + cubeSize / 2.0f);
+		glEnd();
+		
+		// left surface
+		glBegin(GL_POLYGON);
+		glColor4f(0, 102 / 255.0f, 204 / 255.0f, 0.5f);
+		glVertex3f(pt.x() - (cubeSize / 2.0f), pt.y() - (cubeSize / 2.0f), pt.z() + cubeSize / 2.0f);
+		glVertex3f(pt.x() - (cubeSize / 2.0f), pt.y() - (cubeSize / 2.0f), pt.z() - cubeSize / 2.0f);
+		glVertex3f(pt.x() - (cubeSize / 2.0f), pt.y() + (cubeSize / 2.0f), pt.z() - cubeSize / 2.0f);
+		glVertex3f(pt.x() - (cubeSize / 2.0f), pt.y() + (cubeSize / 2.0f), pt.z() + cubeSize / 2.0f);
+		glEnd();
+		
+		
+// 		glColor4f(0, 102 / 255.0f, 204 / 255.0f, 0.1f);
+// 		glVertex3f(pt.x(), pt.y(), pt.z());
+	}
+// 	glEnd();
 
-  DrawAxes();
-
-  glutSwapBuffers();
-    
+	glFinish();
+	glutSwapBuffers();
+	pthread_mutex_unlock(&cubePlotMutex);
 }
 
 void GLViewer::Pick(GLint name)
@@ -157,7 +212,9 @@ void GLViewer::Initialize ()
 
     glEnable(GL_POINT_SMOOTH);
     glEnable(GL_BLEND);
-    glClearColor(1.0, 1.0, 1.0, 1.0);											// specify clear values for the color buffers								
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glClearColor(0.0, 0.0, 0.0, 0.0);											// specify clear values for the color buffers								
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 void GLViewer::Run(int argc, char** argv)
@@ -182,6 +239,7 @@ void GLViewer::Run(int argc, char** argv)
     zprPickFunc(Pick);
     
     Initialize();
+	pcl_octree_impl->ocGridUpdatedSignal.connect(boost::bind(&GLViewer::GetOccupiedVoxels, this)); // subscribe the listner
     glutMainLoop();
 
 }

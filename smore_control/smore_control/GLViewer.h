@@ -24,6 +24,12 @@ public:
 private:
   
   void Initialize();
+  void GetOccupiedVoxels();
+  
+  int lidarUpdateCounter;
+  
+  static void VoxelDraw(float cubeSize);
+  static std::vector<octomap::point3d> voxelVector;
   
   glutWindow win;
   static PCL_OCTREE_IMPL *pcl_octree_impl;
@@ -36,5 +42,6 @@ private:
   static gazebo::math::Pose lidarPose;
   static std::vector<pcl::PointXYZ> points;
   static void GetLidarPointsThread();
+  static float cubeSize;
 };
 

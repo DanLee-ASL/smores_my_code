@@ -33,20 +33,6 @@ static pthread_mutex_t returnPointMutex;
 
 PCL_OCTREE_IMPL::PCL_OCTREE_IMPL(int width, int height)
 {
-//   pCloud = pcl::PointCloud<pcl::PointXYZ>::Ptr(new pcl::PointCloud<pcl::PointXYZ>);
-//   pCloud->width = width;
-//   pCloud->height = height;
-//   pCloud->points.resize(0);
-// 
-//   octree = new pcl::octree::OctreePointCloud<pcl::PointXYZ>(0.25);
-//   octree->setInputCloud(pCloud);
-//   octree->addPointsFromInputCloud();
-  
-  
-  
-//   octree = new pcl::octree::OctreePointCloudSearch<pcl::PointXYZ>(128.0f);
-//   octree->defineBoundingBox(0.1, 0.1, 0.1);
-
 	octoMapTree = new octomap::OcTree(0.025);
 }
 
@@ -69,30 +55,8 @@ void print_query_info(octomap::point3d query, octomap::OcTreeNode* node) {
 
 void PCL_OCTREE_IMPL::AddPoint(double x, double y, double z)
 {
-//     pcl::PointXYZ searchPt = pcl::PointXYZ(x, y, z);
-
-// 	octree->deleteTree();
-// 	octree->setInputCloud(pCloud);
-// 	octree->addPointsFromInputCloud();
-//     octree->addPointToCloud(searchPt, pCloud);
-
-//     std::cout << pCloud->points.size() << "\t";
-
 	octomap::point3d pt(x, y, z);
 	octoMapTree->updateNode(pt, true);
-// 	std::cout << octoMapTree->size() << std::endl;
-// 	
-// 	octomap::point3d query (0., 0., 0.);
-// 	octomap::OcTreeNode* result = octoMapTree->search (query);
-// 	print_query_info(query, result);
-// 
-// 	query = octomap::point3d(-1.,-1.,-1.);
-// 	result = octoMapTree->search (query);
-// 	print_query_info(query, result);
-// 
-// 	query = octomap::point3d(1.,1.,1.);
-// 	result = octoMapTree->search (query);
-// 	print_query_info(query, result);
 }
 
 void PCL_OCTREE_IMPL::AddScan(double* xPts, double* yPts, double* zPts, int nPoints, double poseX, double poseY, double poseZ)
@@ -100,11 +64,12 @@ void PCL_OCTREE_IMPL::AddScan(double* xPts, double* yPts, double* zPts, int nPoi
 	octomap::Pointcloud scan;
 	for(int i = 0; i < nPoints; i++)
 	{
-// 		std::cout << xPts[i] << "\t" << yPts[i] << "\t" << zPts[i] << std::endl;
 		scan.push_back(xPts[i], yPts[i], zPts[i]);
 	}
+	pthread_mutex_lock(&returnPointMutex);
 	octoMapTree->insertScan(scan, octomap::point3d(poseX, poseY, poseZ), 10);
-// 	std::cout << "Size: " << octoMapTree->size() << std::endl;
+	pthread_mutex_unlock(&returnPointMutex);
+	ocGridUpdatedSignal();
 }
 
 
@@ -116,7 +81,6 @@ void PCL_OCTREE_IMPL::DownSample(float voxelResolution)
   sor.filter(*pCloudFiltered);
   std::cout << pCloud->points.size() << "\t";
   pCloud = pCloudFiltered;
-  
 }
 
 
@@ -133,7 +97,21 @@ std::vector< pcl::PointXYZ > PCL_OCTREE_IMPL::GetPoints()
   return pts;
 }
 
-std::vector<octomap::point3d> PCL_OCTREE_IMPL::GetVoxels()
+std::vector<octomap::point3d> PCL_OCTREE_IMPL::GetVoxels(int max_tree_depth, float &cubeSize)
 {
-	
+	std::vector<octomap::point3d> occupiedVoxels;
+	pthread_mutex_lock(&returnPointMutex);
+	for(octomap::OcTree::tree_iterator it = octoMapTree->begin_tree(max_tree_depth), end = octoMapTree->end_tree(); it!= end; ++it)
+	{
+		if(it.isLeaf())
+		{
+			if(octoMapTree->isNodeOccupied(*it))
+			{
+				occupiedVoxels.push_back(octomap::point3d(it.getX(), it.getY(), it.getZ()));
+			}
+		}
+	}
+	pthread_mutex_unlock(&returnPointMutex);
+	cubeSize = octoMapTree->getResolution();
+	return occupiedVoxels;
 }

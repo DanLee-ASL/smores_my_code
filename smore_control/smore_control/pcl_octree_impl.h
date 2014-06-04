@@ -32,7 +32,9 @@
 #include <pcl/common/common.h>
 #include <pcl/octree/octree.h>
 #include <pcl/filters/voxel_grid.h>
+#include <boost/signals2.hpp>
 #include <octomap/octomap.h>
+#include <octomap/OcTree.h>
 
 class PCL_OCTREE_IMPL
 {
@@ -44,7 +46,8 @@ public:
   void AddScan(double* xPts, double* yPts, double* zPts, int nPoints, double poseX, double poseY, double poseZ);
   void DownSample(float voxelResolution);
   std::vector<pcl::PointXYZ> GetPoints();
-  std::vector<octomap::point3d> GetVoxels();
+  std::vector<octomap::point3d> GetVoxels(int max_depth, float &cubeSize);
+  boost::signals2::signal<void ()> ocGridUpdatedSignal;
 
 private:
   pcl::PointCloud<pcl::PointXYZ>::Ptr pCloud;
