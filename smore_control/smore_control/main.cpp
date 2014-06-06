@@ -5,7 +5,8 @@
 #include <unistd.h>
 #include <termios.h>
 
-#include "command_message.pb.h"
+#include <msgs/command_message.pb.h>
+#include <msgs/world_command_message.pb.h>
 #include <boost/thread.hpp>
 
 #include <iostream>
@@ -25,6 +26,8 @@ gazebo::transport::PublisherPtr pub;
 
 double leftWheel = 0, rightWheel = 0, joint1 = 0, joint2 = 0;
 bool doSwippingUD = false, doRotate = false;
+
+typedef const boost::shared_ptr<const command_message::msgs::WorldMessage> WorldMessagePtr;
 
 char getch() {
   
@@ -79,6 +82,17 @@ void lidarCallback(ConstLaserScanStampedPtr &msg) {
   glViewer->SetLidarPoints((double*)(msg->scan().ranges().data()), msg->scan().ranges_size(), msg->scan().angle_min(), msg->scan().angle_max(), msg->scan().angle_step(),
 			   msg->scan().range_min(), msg->scan().range_max());
   
+}
+
+void SMORESWorldStatusCallback(WorldMessagePtr &msg)
+{
+	if(msg->messagetype() == 11)
+	{
+		for(int i = 0; i < msg->stringmessages_size(); i++)
+		{
+			std::cout << "Name: " << msg->stringmessages(i) << std::endl;
+		}
+	}
 }
 
 void GLViewerThread(int argc, char** argv) {
@@ -171,6 +185,9 @@ int main(int argc, char **argv) {
     // subscribe to LIDAR message
     std::string lidarName = "/gazebo/default/SMORES6Uriah/SMORES_LIDAR/model/LIDAR_sensor/scan";
     gazebo::transport::SubscriberPtr lidarSub = node->Subscribe<gazebo::msgs::LaserScanStamped>(lidarName, lidarCallback);
+	
+	gazebo::transport::PublisherPtr worldMessagePublisher = node->Advertise<command_message::msgs::WorldMessage>("/gazebo/default/SMORES_WorldMessage");
+	gazebo::transport::SubscriberPtr worldMessageSubscriber = node->Subscribe<command_message::msgs::WorldMessage>("/gazebo/default/SMORES_WorldStatus", SMORESWorldStatusCallback);
         
     std::cout << "getting in to the loop..." << std::endl;
     command_message::msgs::CommandMessage msg;
@@ -192,71 +209,70 @@ int main(int argc, char **argv) {
 	bool isRunning = true;
     while(isRunning)
     {
-//       std::cin >> key_pressed;
-      key_pressed = getch();
-	  bool changed = false;
-      switch(key_pressed)
-      {
-		case 'i':
-			leftWheel += 0.1;
-			rightWheel += 0.1;
-			changed = true;
-			break;
-		
-		case 'k':
-			leftWheel -= 0.1;
-			rightWheel -= 0.1;
-			changed = true;
-			break;
-		
-		case 'j':
-			leftWheel -= 0.1;
-			rightWheel += 0.1;
-			changed = true;
-			break;
-		
-		case 'l':
-			leftWheel += 0.1;
-			rightWheel -= 0.1;
-			changed = true;
-			break;
-		
-		case 's':
-			leftWheel = 0.0;
-			rightWheel = 0.0;
-			changed = true;
-			break;
-		
-		case 'r':
-			joint1 += 0.1;
-			changed = true;
-			break;
-		
-		case 't':
-			joint1 -= 0.1;
-			changed = true;
-			break;
-		
-		case 'y':
-			joint2 += 0.1;
-			changed = true;
-			break;
-		case 'u':
-			joint2 -= 0.1;
-			changed = true;
-			break;
-		case 'q':
-			doSwippingUD = !doSwippingUD;
-			changed = true;
-			break;
-		case 'w':
-			doRotate = !doRotate;
-			changed = true;
-			break;
-		case 'z':
-			isRunning = false;
-			break;
-	}
+		key_pressed = getch();
+		bool changed = false;
+		switch(key_pressed)
+		{
+			case 'i':
+				leftWheel += 0.1;
+				rightWheel += 0.1;
+				changed = true;
+				break;
+			
+			case 'k':
+				leftWheel -= 0.1;
+				rightWheel -= 0.1;
+				changed = true;
+				break;
+			
+			case 'j':
+				leftWheel -= 0.1;
+				rightWheel += 0.1;
+				changed = true;
+				break;
+			
+			case 'l':
+				leftWheel += 0.1;
+				rightWheel -= 0.1;
+				changed = true;
+				break;
+			
+			case 's':
+				leftWheel = 0.0;
+				rightWheel = 0.0;
+				changed = true;
+				break;
+			
+			case 'r':
+				joint1 += 0.1;
+				changed = true;
+				break;
+			
+			case 't':
+				joint1 -= 0.1;
+				changed = true;
+				break;
+			
+			case 'y':
+				joint2 += 0.1;
+				changed = true;
+				break;
+			case 'u':
+				joint2 -= 0.1;
+				changed = true;
+				break;
+			case 'q':
+				doSwippingUD = !doSwippingUD;
+				changed = true;
+				break;
+			case 'w':
+				doRotate = !doRotate;
+				changed = true;
+				break;
+			case 'z':
+				isRunning = false;
+				break;
+		}
 		if(changed)
 		{
 			msg.set_messagetype(4);
@@ -269,6 +285,12 @@ int main(int argc, char **argv) {
 			pub->Publish(msg);
 			std::printf("J1: %f\tJ2: %f\tLW: %f\tRW:%f\n", joint1, joint2, leftWheel, rightWheel);
 		}
+		
+		command_message::msgs::WorldMessage worldMsg;
+		worldMsg.set_messagetype(1);
+		worldMessagePublisher->Publish(worldMsg);
+		std::cout << "Published" << std::endl;
+		
 		gazebo::common::Time::MSleep(100);
     }
     glViewer->~GLViewer();

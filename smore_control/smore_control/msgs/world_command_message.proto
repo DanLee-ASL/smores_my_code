@@ -1,0 +1,10 @@
+package command_message.msgs;
+
+message WorldMessage
+{
+	// Indicator of what kind of message it is
+	// 1 = asks for existing model names
+	// 11 = return for existing model names
+	required int32 MessageType = 1;
+	repeated string StringMessages = 2;
+}

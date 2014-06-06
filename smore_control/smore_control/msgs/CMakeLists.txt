@@ -11,6 +11,7 @@ endforeach()
 set (msgs
   collision_message_plus.proto
   command_message.proto
+  world_command_message.proto
   ${PROTOBUF_IMPORT_DIRS}/pose.proto
   ${PROTOBUF_IMPORT_DIRS}/vector3d.proto
   ${PROTOBUF_IMPORT_DIRS}/quaternion.proto
