@@ -106,8 +106,10 @@ target_link_libraries(smore_control command_message collision_message_plus GLVie
         ${GAZEBO_LIBRARIES}
         ${PROTOBUF_LIBRARIES}
         ${CMAKE_THREAD_LIBS_INIT}
-        ${QT_LIBRARIES})
+        ${QT_LIBRARIES}
+        /usr/lib/libtbb.so.2
+        )
 add_dependencies(smore_control command_message collision_message_plus)
 
-add_executable(zprdemo zprdemo.c zpr.c)
-target_link_libraries(zprdemo glut ${GLLib})
+# add_executable(zprdemo zprdemo.c zpr.c)
+# target_link_libraries(zprdemo glut ${GLLib})
