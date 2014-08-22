@@ -379,7 +379,7 @@ int main(int argc, char **argv) {
     gazebo::transport::SubscriberPtr worldMessageSubscriber = node->Subscribe<command_message::msgs::WorldStatusMessage>("/gazebo/default/SMORES_WorldStatus", SMORESWorldStatusCallback);
         
     // occupied cell message
-    occupiedCellPublisher = node->Advertise<gazebo::msgs::Vector3d>("~/SensorScore");
+    occupiedCellPublisher = node->Advertise<gazebo::msgs::Vector3d>("~/OccupiedCellsVector3d");
     
     boost::thread t(&GLViewerThread, argc, argv);
     boost::thread swipeThread(&SwipeThread);
