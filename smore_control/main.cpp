@@ -59,8 +59,8 @@ int lidarPoseNameIndex = -1;
 GLViewer *glViewer;
 
 gazebo::math::Pose robotPose, lidarPose;
-gazebo::transport::PublisherPtr pub;
 gazebo::transport::PublisherPtr worldMessagePublisher;
+gazebo::transport::PublisherPtr occupiedCellPublisher;
 
 gazebo::transport::NodePtr node;
 
@@ -270,9 +270,24 @@ void GUIButtonCallback(SmoresControllerWindow::GUIBtnType type)
 				topicNameToCommand[currentlySelectedTopicName].velRightWheel);
 }
 
+
+void OccupiedCellUpdatedCallback(std::vector<octomap::point3d> points)
+{
+    std::cout << "GOT Voxels" << std::endl;
+    for(int i = 0; i < points.size(); i++)
+    {
+        gazebo::msgs::Vector3d v;
+        v.set_x(points[i].x());
+        v.set_y(points[i].y());
+        v.set_z(points[i].z());
+        occupiedCellPublisher->Publish(v);
+    }
+}
+
 void GLViewerThread(int argc, char** argv) {
   try{
     glViewer = new GLViewer();
+    glViewer->occupiedCellUpdated.connect(boost::bind(OccupiedCellUpdatedCallback, _1));
     glViewer->Run(argc, argv);
   }
   catch(boost::thread_interrupted&) {
@@ -353,24 +368,18 @@ int main(int argc, char **argv) {
 
     // create our node for communication
     node = gazebo::transport::NodePtr(new gazebo::transport::Node());
-    node->Init("SMORES6Uriah");
-
-	// publish to a Gazebo topic
-//     std::string robotName = "SMORES6Uriah";
-//     std::string pubName = "~/" + robotName + "_world";
-//     pub = node->Advertise<command_message::msgs::CommandMessage>(pubName);
+    node->Init("Octomap");
 
     // subscribe to Pose topic
     std::string poseName = "/gazebo/default/pose/info";
     gazebo::transport::SubscriberPtr poseSub = node->Subscribe<gazebo::msgs::PosesStamped>(poseName, poseCallback);
-
-    // subscribe to LIDAR message
-//     std::string lidarName = "/gazebo/default/SMORES6Uriah/SMORES_LIDAR/model/range_sensor/scan";
-//     gazebo::transport::SubscriberPtr lidarSub = node->Subscribe<gazebo::msgs::LaserScanStamped>(lidarName, lidarCallback);
 	
+    // world status message 
     worldMessagePublisher = node->Advertise<command_message::msgs::WorldStatusMessage>("/gazebo/default/SMORES_WorldMessage");
     gazebo::transport::SubscriberPtr worldMessageSubscriber = node->Subscribe<command_message::msgs::WorldStatusMessage>("/gazebo/default/SMORES_WorldStatus", SMORESWorldStatusCallback);
         
+    // occupied cell message
+    occupiedCellPublisher = node->Advertise<gazebo::msgs::Vector3d>("~/SensorScore");
     
     boost::thread t(&GLViewerThread, argc, argv);
     boost::thread swipeThread(&SwipeThread);

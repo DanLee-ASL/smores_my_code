@@ -37,11 +37,12 @@ GLViewer::~GLViewer()
 
 void GLViewer::GetOccupiedVoxels()
 {
-	if(++lidarUpdateCounter >= getVoxelFrequency)
-	{
-		voxelVector = pcl_octree_impl->GetVoxels(16, cubeSize);
-		lidarUpdateCounter = 0;
-	}
+    if(++lidarUpdateCounter >= getVoxelFrequency)
+    {
+        voxelVector = pcl_octree_impl->GetVoxels(16, cubeSize);
+        lidarUpdateCounter = 0;
+        occupiedCellUpdated(voxelVector);
+    }
 }
 
 // This function set the GLOBAL pose of the lidar scan

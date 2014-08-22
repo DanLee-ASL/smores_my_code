@@ -1,5 +1,6 @@
 #include <GL/glew.h>
 #include <gazebo/math/Pose.hh>
+#include <gazebo/msgs/msgs.hh>
 #include "pcl_octree_impl.h"
 
 class GLViewer {
@@ -20,6 +21,7 @@ public:
   void Run(int argc, char** argv);
   void SetLidarPoints(double* range, int nPoints, double angleMin, double angleMax, double angleStepSize, double minRange, double maxRange);
   void SetLidarPose(gazebo::math::Pose p);
+  boost::signals2::signal<void(std::vector<octomap::point3d>)> occupiedCellUpdated;
     
 private:
   

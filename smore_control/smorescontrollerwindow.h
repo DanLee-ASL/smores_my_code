@@ -23,14 +23,14 @@ public:
     explicit SmoresControllerWindow(QWidget *parent = 0);
     ~SmoresControllerWindow();
     boost::signals2::signal<void (GUIBtnType)> btnCalled;
-	void SetGUIComponents(Components comp, boost::any arg);
-	std::string GetCurrentSelectedTopic();
+    void SetGUIComponents(Components comp, boost::any arg);
+    std::string GetCurrentSelectedTopic();
 	
 
 signals:
 	// this SIGNAL is defined for the thread-safe method calling
-	void SetGUIComponents_SIGNAL(Components comp, boost::any arg);
-    void formLoaded();
+      void SetGUIComponents_SIGNAL(Components comp, boost::any arg);
+      void formLoaded();
 
 private slots:
 	// this SLOT is defined for the thread-safe method calling

@@ -32,7 +32,7 @@ target_link_libraries(smores_gui ${QT_LIBRARIES})
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
 #--------- END OF QT GUI STUFF
 
-add_subdirectory(../../../repo/SimulationPlugins/MessageDefinition MessageDefinition)
+add_subdirectory(../../SimulationPlugins/MessageDefinition MessageDefinition)
 
 
 include_directories(
