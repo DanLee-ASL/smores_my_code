@@ -32,13 +32,10 @@ target_link_libraries(smores_gui ${QT_LIBRARIES})
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
 #--------- END OF QT GUI STUFF
 
+add_subdirectory(../../../SimulationPlugins/MessageDefinition MessageDefinition)
 
-add_subdirectory(
-  extern/glfw-3.0.4
-)
 
 include_directories(
-  extern/glfw-3.0.4/include/
   extern/glew-1.10.0/include/
 )
 
@@ -52,7 +49,6 @@ set(OPENGL_LIBRARY
 	${OPENGL_LIBRARY}
 	-lGL -lGLU -lXrandr -lXext -lX11 -lrt
 	${CMAKE_DL_LIBS}
-	${GLFW_LIBRARIES}
 )
 
 add_library(GLEW_1100 STATIC
@@ -60,8 +56,7 @@ add_library(GLEW_1100 STATIC
   ${GLEW_INCLUDE}
 )
 target_link_libraries(GLEW_1100 ${OPENGL_LIBRARY})
-# #END of GLEW
- 
+# #END of GLEW 
 #------- OCTOMAP Portion
 include_directories(
 	include/
@@ -80,27 +75,26 @@ link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 #------- PCL PORTIONS END
 
-set(GLLib ${OPENGL_LIBRARY} ${GLUT_Xi_LIBRARY} ${GLUT_Xmu_LIBRARY} ${GLFW_LIBRARIES} ${OPENGL_glu_LIBRARY} ${GLEW_1100} ${glfw_LIBRARIES}) 
+set(GLLib ${OPENGL_LIBRARY} ${GLUT_Xi_LIBRARY} ${GLUT_Xmu_LIBRARY} ${OPENGL_glu_LIBRARY} ${GLEW_1100}) 
 
 add_library(PCL_OCTREE pcl_octree_impl.cpp)
 target_link_libraries(PCL_OCTREE ${PCL_LIBRARIES} ${OCTOMAP_LIBRARIES})
 
 add_library(GLViewer GLViewer.cpp zpr.c)
-target_link_libraries(GLViewer glfw GLEW_1100 glut PCL_OCTREE)
+target_link_libraries(GLViewer GLEW_1100 glut PCL_OCTREE)
 
 
 include_directories(${GAZEBO_INCLUDE_DIRS})
-link_directories(${GAZEBO_LIBRARY_DIRS})
+link_directories(${GAZEBO_LIBRARY_DIRS} ${CMAKE_CURRENT_BINARY_DIR}/MessageDefinition)
 
 include_directories(
         ${GAZEBO_INCLUDE_DIRS}
-        ${CMAKE_CURRENT_BINARY_DIR}/msgs
-        )
-link_directories(${GAZEBO_LIBRARY_DIRS} ${CMAKE_CURRENT_BINARY_DIR}/msgs)
-add_subdirectory(msgs)
+        ${CMAKE_CURRENT_BINARY_DIR}/MessageDefinition
+)
+link_directories(${GAZEBO_LIBRARY_DIRS} ${CMAKE_CURRENT_BINARY_DIR}/MessageDefinition)
 
 add_executable(smore_control main.cpp)
-target_link_libraries(smore_control command_message collision_message_plus GLViewer smores_gui
+target_link_libraries(smore_control GLViewer smores_gui command_message
         ${Boost_LIBRARIES}
         ${GLLib}
         ${GAZEBO_LIBRARIES}
@@ -109,7 +103,4 @@ target_link_libraries(smore_control command_message collision_message_plus GLVie
         ${QT_LIBRARIES}
         /usr/lib/libtbb.so.2
         )
-add_dependencies(smore_control command_message collision_message_plus)
-
-# add_executable(zprdemo zprdemo.c zpr.c)
-# target_link_libraries(zprdemo glut ${GLLib})
+add_dependencies(smore_control command_message)
