@@ -77,7 +77,8 @@ void GLViewer::SetLidarPoints(double* range, int nPoints, double angleMin, doubl
 		yPts.push_back(globalLidarPtPose.pos.y);
 		zPts.push_back(globalLidarPtPose.pos.z);
     }
-    pcl_octree_impl->AddScan(&xPts[0], &yPts[0], &zPts[0], nPoints, lidarPose.pos.x, lidarPose.pos.y, lidarPose.pos.z);
+    if(xPts.size() > 0)
+      pcl_octree_impl->AddScan(&xPts[0], &yPts[0], &zPts[0], nPoints, lidarPose.pos.x, lidarPose.pos.y, lidarPose.pos.z);
     pthread_mutex_unlock(&lidar_mutex);
     delete rangeCopy;
     this->numPoints = nPoints;
